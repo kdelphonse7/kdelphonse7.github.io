@@ -7,134 +7,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="css/base.css" rel="stylesheet" type="text/css" />
-  <link href="css/main.css" rel="stylesheet" type="text/css" />
+  <link href="css/jquery.ui.menu.css" rel="stylesheet" type="text/css" />
 
+  <link href="css/main.css" rel="stylesheet" type="text/css" />
+  
+  <!--[if lt IE 9]>
+	  <script src="js/matchmedia.polyfill.js"></script>
+    <script src="js/respond.js"></script>
+    <script src="js/html5shiv.js"></script>
+	<![endif]-->  
+  
   <script src="js/jquery-1.10.2.min.js"></script>
+  <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
   <script src="js/main.js"></script>
 
   <!--[if lte IE 7]>
 	  <link href="css/iehacks.css" rel="stylesheet" type="text/css" />
 	<![endif]-->
-
-  <!--[if lt IE 9]>
-	  <script src="js/html5shiv.js"></script>
-	<![endif]-->  
+    
+  <!--[if IE 7]>
+	  <link href="css/ie7.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
+  
+  <!--[if IE 6]>    
+	  <script src="js/DD_belatedPNG_0.0.8a.js"></script>
+    <script> DD_belatedPNG.fix('#main-logo');</script> 
+    <link href="css/ie6.css" rel="stylesheet" type="text/css" />    
+	<![endif]-->
+  
 </head>
 
 <body>
-  <div id="bg">
-    <img id="bg-img" src="img/Beach-16-9-reduce.jpg" alt="">
-  </div>
-  <div class="ym-wrapper" id="content">
-    <div class="ym-wbox">
-      <main>
-        <div class="ym-column linearize-level-1">
-          <div class="ym-col1">
-            <div class="ym-cbox" id="left-nav-wrapper">
-              <section>
-
-                <div class="ym-grid">
-                  <div class="ym-gl" id="main-logo-gl">
-                    <div class="ym-gbox" id="main-logo-gb">
-                      <img id="main-logo" src="img/mcp-main-logo.png" alt="logo-image">
-                      <h2 id="main-logo-text">Darkness Crys</h2>
-                    </div>
-                  </div>
-                  
-                  <div class="ym-gl" id="main-nav">                    
-                    <nav class="ym-vlist">
-                      <div>
-                        <p id="nav-button">&#9776; Menu</p>
-                      </div>                    
-                      <ul class="main-nav-ul" id="main-nav-outer">
-                        <li><a href="#">Photography</a>
-                        </li>
-                        <li><span>Demo Reel</span>
-                          <ul class="main-nav-ul">
-                            <li><a href="#">Commercials</a>
-                            </li>
-                            <li><a href="#">Documentaries</a>
-                            </li>
-                            <li><a href="#">Drama</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li><a href="#">Philosophy</a>
-                        </li>
-                        <li><a href="#">Contact</a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </div>
-          <div class="ym-col3">
-            <div class="ym-cbox" id="main-right-panel">
-              <div id="bg-dark"></div>
-              <h2>Main Content</h2>
-              <section class="ym-grid linearize-level-2">
-                <article class="ym-g50 ym-gl">
-                  <div class="ym-gbox">
-                    <!-- content -->
-                    <h3>Heading</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                      diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                      aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                      justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                      sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                      ipsum dolor sit amet, consetetur sadipscing elitr.</p>
-                  </div>
-                </article>
-                <article class="ym-g50 ym-gr">
-                  <div class="ym-gbox">
-                    <!-- content -->
-                    <h3>Heading</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                      diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                      aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                      justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                      sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                      ipsum dolor sit amet, consetetur sadipscing elitr.</p>
-                  </div>
-                </article>
-              </section>
-              <section class="ym-grid linearize-level-2">
-                <article class="ym-g50 ym-gl">
-                  <div class="ym-gbox">
-                    <!-- content -->
-                    <h3>Heading</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                      diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                      aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                      justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                      sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                      ipsum dolor sit amet, consetetur sadipscing elitr.</p>
-                  </div>
-                </article>
-                <article class="ym-g50 ym-gr">
-                  <div class="ym-gbox">
-                    <!-- content -->
-                    <h3>Heading</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                      diam nonumy eirmod tempor invidunt ut labore et dolore magna
-                      aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                      justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-                      sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem
-                      ipsum dolor sit amet, consetetur sadipscing elitr.</p>
-                  </div>
-                </article>
-              </section>
-            </div>
-          </div>
+ <div class="ym-wrapper" id="content">
+ 
+  <div class="ym-wbox">
+    <div class="ym-column" id="l-ym-column">
+    
+      <div class="ym-col1" id="l-ym-col1">
+      
+      <div class="ym-cbox ym-clearfix" id="main-logo-gl">
+        <div class="ym-gbox" id="main-logo-gb">
+         
+        <img id="main-logo" src="img/KdLogo.png" alt="logo-image" />
+          <h2 id="main-logo-text">Director of Photography</h2>
         </div>
-      </main>
-    </div>
-  </div>
+        <a id="logo-home-link" href="#"></a>
+      </div>
+      
+      
+        <div class="ym-cbox ym-clearfix" id="left-nav-wrapper">
+        <div id="menu-text-container">
+              <p id="nav-button">Menu</p>
+            </div>  
+          <nav class="ym-vlist">                              
+            <ul class="main-nav-ul" id="main-nav-outer">
+              <li>
+                <a href="#">
+                  Photography                  
+                </a>
+                <ul class="sub-nav-ul fly-out">
+                  <li><a href="#">Gallery</a>
+                  </li>
+                  <li><a href="#">Weddings</a>
+                  </li>
+                </ul>
+              </li>              
+              <li>
+                <a href="#">
+                Cinematography               
+              </a>
+                <ul class="sub-nav-ul fly-out">
+                  <li><a href="#">Commercials</a>
+                  </li>
+                  <li><a href="#">Documentaries</a>
+                  </li>
+                  <li><a href="#">Drama</a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#">Demo Reel</a>                
+              </li>
+              <li><a href="#">Philosophy</a>
+              </li>
+              <li><a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      
+      <div class="ym-col3" >
+        <div class="ym-cbox ym-clearfix">
+          <p id="personal-thoughts"> 
+          BART always gets on my nerves!!
+          <br>-Keslere Delphonse</p>
+        </div>
+      </div>
 
-  <!-- full skip link functionality in webkit browsers -->
-  <script src="js/yaml-focusfix.js"></script>
+      
+
+      
+    </div>
+    
+  </div>
+  
+  
+ </div>
 </body>
 
 </html>
