@@ -24,8 +24,8 @@
     flyOutMenuPresent = true;
 
   function checkBreakPoint(dim, lastdim, breakPoint, status ,elem) {
-   if( (dim <= lastdim) && (dim < breakPoint)) {
-      //console.log('width hide');
+   if( (dim <= lastdim) && (dim <= breakPoint)) {
+      console.log('almost there');
       if(!status) {
         elem.hide();
       }
@@ -86,5 +86,10 @@
       clickStatus = false;
     }
   });  
+  
+  //Use svg logo if supported
+  if (Modernizr.svg) {
+    $("#main-logo").attr("src", "img/KdLogo.svg");
+  }
  
 });
