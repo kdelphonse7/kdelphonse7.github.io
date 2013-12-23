@@ -1,4 +1,8 @@
-﻿#main-nav-outer{
+﻿body {
+ background-image: url('../img/Fog.jpg');
+}
+
+#main-nav-outer{
   background-color: #f5f5f5;
 }
 
@@ -15,4 +19,8 @@
 }
 #main-logo-text {
   width: 190px;
+}
+
+#bg {
+  display: none;
 }

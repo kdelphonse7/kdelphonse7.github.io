@@ -25,7 +25,6 @@
 
   function checkBreakPoint(dim, lastdim, breakPoint, status ,elem) {
    if( (dim <= lastdim) && (dim <= breakPoint)) {
-      console.log('almost there');
       if(!status) {
         elem.hide();
       }
