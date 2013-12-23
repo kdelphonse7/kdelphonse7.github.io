@@ -10,7 +10,7 @@
 	<circle fill="none" stroke="#FFFFFF" stroke-width="6" stroke-miterlimit="10" cx="87.5" cy="87.5" r="72.205"/>
 </g>
 <g id="Layer_3">
-	<text transform="matrix(1 0 0 1 28.2935 100.7363)" fill="#FFFFFF" font-family="'Verdana'" font-size="95">K</text>
-	<text transform="matrix(1 0 0 1 72.9399 157.0879)" fill="#FFFFFF" font-family="'Verdana'" font-size="80">D</text>
+	<text transform="matrix(1 0 0 1 28.2935 100.7363)" fill="#FFFFFF" font-family="'Verdana', Sans-serif" font-size="95">K</text>
+	<text transform="matrix(1 0 0 1 72.9399 157.0879)" fill="#FFFFFF" font-family="'Verdana', Sans-serif" font-size="80">D</text>
 </g>
 </svg>
