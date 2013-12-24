@@ -90,5 +90,10 @@
   if (Modernizr.svg) {
     $("#main-logo").attr("src", "img/KdLogo.svg");
   }
- 
+  
+  //Hide the css background fallback when javascript is enabled
+  $('#bg').addClass('hideThisThing');
+  //Backstretch plugin
+  $.backstretch("./img/Fog.jpg");
+
 });

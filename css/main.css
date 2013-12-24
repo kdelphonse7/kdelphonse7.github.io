@@ -37,6 +37,10 @@ body {
   z-index:1;
 }
 
+#bg.hideThisThing {
+  display: none;
+}
+
 .ym-cbox {
   padding: 0px;
 }
