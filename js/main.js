@@ -1,5 +1,9 @@
 ﻿$(function(){
+  //Add class on html when javascript is enabled
+  var $html = $('html');
+  $html.removeClass('no-js').addClass('js');
 
+  //Alias the elements for the nav menu
   var $flySubMenus = $('ul.fly-out');
   $flySubMenus.addClass('sub-level');
 
@@ -7,20 +11,22 @@
 
   function createFlyoutMenu() { $mainMenu.menu(); }
   
+  //Create the flyout menu
+  //Assuming the page is viewed on a large screen
   createFlyoutMenu();   
 
   var innerWidth,
     $document = $(document),
-    $theWindow = $(window),
-    lastWindowWidth = $theWindow.width(),
-    lastWindowHeight = $theWindow.height(),
+    $window = $(window),
+    lastWindowWidth = $window.width(),
+    lastWindowHeight = $window.height(),
     $ulNav = $('ul.main-nav-ul'),
     breakPoint = 600,
     largerThanBreak = breakPoint + 1,
     vertBreakPoint = 250,
     greaterVertBreakPoint = vertBreakPoint + 1,
     clickStatus = false,
-    $navButton = $( "#nav-button" ),
+    $navButton = $('#nav-button'),
     flyOutMenuPresent = true;
 
   function checkBreakPoint(dim, lastdim, breakPoint, status ,elem) {
@@ -31,9 +37,9 @@
     }
   }
   
-  $theWindow.on("resize.kdSite", function() {    
-   innerWidth = $theWindow.width();
-   innerHeight = $theWindow.height();
+  $window.on("resize.kdSite", function() {    
+   innerWidth = $window.width();
+   innerHeight = $window.height();
 
    //Nav button is not hidden
     if(!$navButton.is( ":hidden" )) {
@@ -73,7 +79,7 @@
   });
   
   //Trigger for performing adjustments on browser load
-  $theWindow.trigger('resize.kdSite'); 
+  $window.trigger('resize.kdSite'); 
   
   //For the menu button click action  
   $navButton.on('click.kdSite', function() {
@@ -91,9 +97,16 @@
     $("#main-logo").attr("src", "img/KdLogo.svg");
   }
   
-  //Hide the css background fallback when javascript is enabled
-  $('#bg').addClass('hideThisThing');
-  //Backstretch plugin
-  $.backstretch("./img/Fog.jpg");
-
+  //Only use background stretch for newer browsers
+  if(!$html.hasClass('oldIE')) {
+    //Hide the css background fallback when javascript is enabled
+    $('#bg').addClass('hideThisThing');
+    //Backstretch plugin
+    $.backstretch("./img/Fog.jpg");
+  } else {
+    //Remove event listeners for old ie
+    $window.off('resize.kdSite');  
+    $navButton.off('click.kdSite');
+  }
+  
 });

@@ -1,3 +1,12 @@
-﻿#l-ym-col1 {
- margin-left: -20%;
+﻿html {
+  background-color: gray;
+}
+
+#main-logo-gl {
+ background: url('../img/noise-lp.png');
+}
+
+#l-ym-col1 {
+ position: relative;
+ z-index: 5;
 }
