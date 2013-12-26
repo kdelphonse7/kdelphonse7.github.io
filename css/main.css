@@ -198,8 +198,9 @@ ul.sub-level {
   }
 
   #left-nav-wrapper {
-    min-height: 205px;
-  }
+    min-height: 250px;
+	padding: 0px;
+  }  
 
   #main-logo-gl {
     padding: 0px;
@@ -219,6 +220,7 @@ ul.sub-level {
 
   #l-ym-col1 {
     border-bottom: thin double gray;
+	max-height: 250px;
   }
 
   nav.ym-vlist {
@@ -226,11 +228,12 @@ ul.sub-level {
   }
 }
 
-@media screen and (max-width: 735px) {
-  #left-nav-wrapper {
-    min-height: 230px;
+@media screen and (max-width: 890px) {
+  #main-logo-text {
+    font-size: 120%;
   }
 }
+
 
 @media screen and (max-width: 600px), screen and (max-height: 250px) {
   #main-nav-outer {
