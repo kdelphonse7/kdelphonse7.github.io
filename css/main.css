@@ -256,6 +256,10 @@ ul.sub-level {
     width: 100%;
   }
 
+  #l-ym-col1 {
+    max-height: 100%;
+  }
+
   #main-logo,
   #main-logo-text {
     float: left;
