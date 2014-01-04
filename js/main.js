@@ -5,7 +5,8 @@
 
   //Alias the elements for the nav menu
   var $flySubMenus = $('ul.fly-out');
-  $flySubMenus.addClass('sub-level');
+  var subLevelStr = 'sub-level';
+  $flySubMenus.addClass(subLevelStr);
 
   var $mainMenu = $('#main-nav-outer');
 
@@ -27,7 +28,8 @@
     greaterVertBreakPoint = vertBreakPoint + 1,
     clickStatus = false,
     $navButton = $('#nav-button'),
-    flyOutMenuPresent = true;
+    flyOutMenuPresent = true,
+    subMenuPresent = false;
 
   function checkBreakPoint(dim, lastdim, breakPoint, status ,elem) {
    if( (dim <= lastdim) && (dim <= breakPoint)) {
@@ -51,6 +53,8 @@
           .children("ul.sub-nav-ul")
           .removeClass( "sub-level" );
         
+        $flySubMenus.hide();
+
         flyOutMenuPresent = false; 
       }      
       
@@ -90,7 +94,21 @@
       $ulNav.slideUp();
       clickStatus = false;
     }
-  });  
+  });
+  
+  //For submenu hiding and showing
+  $mainMenu.on('click.kdSite2', 'li', function(evt) {
+    var $evtTarget = $(evt.target),
+    $evtTargetSiblingsHidden = $evtTarget.siblings(':hidden');
+
+    if($evtTargetSiblingsHidden.length == 1) {
+      $evtTargetSiblingsHidden.slideDown();
+      subMenuPresent = true;
+    } else if($evtTarget.siblings().length > 0) {
+      $evtTarget.siblings().slideUp();
+      subMenuPresent = false;
+    }
+  });
   
   //Use svg logo if supported
   if (Modernizr.svg) {
