@@ -40,9 +40,9 @@
     $navPhotographyUl = $navPhotography.siblings(':hidden'),
     $navCinematographyUl = $navCinematography.siblings(':hidden');
 
-  function checkBreakPoint(dim, lastdim, breakPoint, status, elem, hasClickedSubMenus) {
+  function checkBreakPoint(dim, lastdim, breakPoint, status, elem) {
     if ((dim <= lastdim) && (dim <= breakPoint)) {
-      if (!status && !hasClickedSubMenus) {
+      if (!status) {
         elem.hide();
       }
     }
@@ -62,6 +62,7 @@
           .children("ul.sub-nav-ul")
           .removeClass("sub-level");
 
+        //Menu not clicked and no submenus clicked
         if (!status && !hasClickedSubMenus) {
           $flySubMenus.hide();
         } else {
@@ -88,9 +89,9 @@
       //Also make sure the nav button was not clicked before
       //Hide the menus            
       checkBreakPoint(innerWidth, lastWindowWidth,
-        breakPoint, clickStatus, $ulNav, hasClickedSubMenus);
+        breakPoint, clickStatus, $ulNav);
       checkBreakPoint(innerHeight, lastWindowHeight,
-        breakPoint, clickStatus, $ulNav, hasClickedSubMenus);
+        breakPoint, clickStatus, $ulNav);
 
     } else {
       //Restore the flyout if it is not present

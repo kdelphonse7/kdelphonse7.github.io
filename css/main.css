@@ -241,10 +241,13 @@ ul.sub-level {
   }
 
   #main-nav-outer a {
-    padding-left: 5%;
-	
+    padding-left: 5%;	
     display: inline-block;
     width: 95%;
+  }
+  
+  #l-ym-col1 {
+	max-height: 100%;
   }
 
   #left-nav-wrapper {
@@ -254,10 +257,6 @@ ul.sub-level {
   #main-logo-gl,
   #left-nav-wrapper {
     width: 100%;
-  }
-
-  #l-ym-col1 {
-    max-height: 100%;
   }
 
   #main-logo,
