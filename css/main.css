@@ -181,9 +181,14 @@ ul.sub-nav-ul a {
   }
   
   #logo-text {
-    font-size: 140%;
+    font-size: 130%;
     padding-top: 1.2em;
   }
+  
+  ul.sub-nav-ul {
+    z-index: 1;
+    padding-top: 0.3em;
+  }  
   
 }
 
@@ -197,5 +202,66 @@ ul.sub-nav-ul a {
   #logo-text {
     float: none;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #main-header-wrapper {
+    width: 100%;
+  }
+
+  #main-logo {
+    width: 100px;
+  }
+  
+  #logo-text {
+    font-size: 110%;
+  }
+  
+  #main-nav {
+    width: 100%;
+    padding: 1em 0em;
+    background-color: #F5F5F5; 
+    text-align: left;   
+  }
+  
+  #main-nav li {
+    width: 80%;
+  }
+    
+  #main-nav-outer > li {
+    clear: both;
+    float: none;    
+  }
+  
+  #main-nav ul ul {
+    display: block;
+  }
+  
+  #main-nav a:hover {
+    background-color: #686868;
+    color: #fafafa;
+  }
+  
+  ul.sub-nav-ul {
+    position: relative;
+    margin-left: 5%;
+  }
+  
+  #main-nav-outer {
+    width: 70%;
+    margin-left: 30%;
+  }
+  
+  #main-nav-outer li {
+    background-color: #F5F5F5;
+    background-image: none;
+  }
+  
+  .main-nav-ul a {
+    color: #383838;
+    display: inline-block;
+    width: 90%;
+    padding-left: 5%;
   }
 }
