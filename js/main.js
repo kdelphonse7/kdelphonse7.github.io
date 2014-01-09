@@ -22,7 +22,6 @@
     $document = $(document),
     $window = $(window),
     lastWindowWidth = $window.width(),
-    lastWindowHeight = $window.height(),
     $ulNav = $('#main-nav'),
     breakPoint = 500,
     largerThanBreak = breakPoint + 1,
@@ -48,7 +47,6 @@
 
   $window.on("resize.kdSite", function () {
     innerWidth = $window.width();
-    innerHeight = $window.height();
 
     //Nav button is not hidden
     if (!$navButton.is(":hidden")) {
@@ -84,12 +82,10 @@
         flyOutMenuPresent = false;
       }
 
-      //Less than width breakpoint or less than height breakpoint
+      //Less than width breakpoint
       //Also make sure the nav button was not clicked before
       //Hide the menus            
       checkBreakPoint(innerWidth, lastWindowWidth,
-        breakPoint, clickStatus, $ulNav);
-      checkBreakPoint(innerHeight, lastWindowHeight,
         breakPoint, clickStatus, $ulNav);
 
     } else {
@@ -105,9 +101,8 @@
       }
     }
 
-    //Current width/height is now the last window width/height
+    //Current width is now the last window width
     lastWindowWidth = innerWidth;
-    lastWindowHeight = innerHeight;
   });
 
   //Trigger for performing adjustments on browser load
