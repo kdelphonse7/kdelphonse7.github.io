@@ -3,14 +3,54 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="175px"
 	 height="175px" viewBox="0 0 175 175" enable-background="new 0 0 175 175" xml:space="preserve">
-<g id="Layer_1" display="none">
+<g id="BG" display="none">
 	<rect display="inline" width="175" height="175"/>
 </g>
-<g id="Layer_2">
-	<circle fill="none" stroke="#FFFFFF" stroke-width="6" stroke-miterlimit="10" cx="87.5" cy="87.5" r="72.205"/>
+<g id="Circle" display="none">
+	<circle display="inline" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-miterlimit="10" cx="87.5" cy="87.5" r="72.205"/>
 </g>
-<g id="Layer_3">
-	<text transform="matrix(1 0 0 1 28.2935 100.7363)" fill="#FFFFFF" font-family="'Verdana', Sans-serif" font-size="95">K</text>
-	<text transform="matrix(1 0 0 1 72.9399 157.0879)" fill="#FFFFFF" font-family="'Verdana', Sans-serif" font-size="80">D</text>
+<g id="Letters" display="none">
+	<g display="inline">
+		<path fill="#FFFFFF" d="M93.096,100.736H81.174L53.853,69.981l-6.865,7.329v23.426h-9.185v-69.07h9.185v36.042l33.538-36.042
+			h11.133L60.811,64.137L93.096,100.736z"/>
+	</g>
+	<g display="inline">
+		<path fill="#FFFFFF" d="M129.893,128.064c0,5.287-1.152,10.078-3.457,14.375s-5.371,7.631-9.199,10
+			c-2.656,1.641-5.619,2.826-8.887,3.555c-3.268,0.73-7.572,1.094-12.91,1.094H80.752V98.924h14.531
+			c5.678,0,10.189,0.41,13.535,1.23s6.178,1.947,8.496,3.379c3.959,2.475,7.045,5.77,9.258,9.883
+			C128.785,117.531,129.893,122.414,129.893,128.064z M121.807,127.947c0-4.557-0.795-8.398-2.383-11.523s-3.959-5.586-7.109-7.383
+			c-2.291-1.301-4.727-2.207-7.305-2.715s-5.664-0.762-9.258-0.762h-7.266v44.883h7.266c3.725,0,6.973-0.273,9.746-0.82
+			s5.318-1.563,7.637-3.047c2.891-1.848,5.059-4.283,6.504-7.305C121.084,136.256,121.807,132.479,121.807,127.947z"/>
+	</g>
+</g>
+<g id="Circle_copy">
+	<circle fill="none" stroke="#FFFFFF" stroke-width="12" stroke-miterlimit="10" cx="87.5" cy="87.5" r="72.205"/>
+</g>
+<g id="Letters_copy">
+	<g>
+		<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M93.096,100.736H81.174L53.853,69.981
+			l-6.865,7.329v23.426h-9.185v-69.07h9.185v36.042l33.538-36.042h11.133L60.811,64.137L93.096,100.736z"/>
+	</g>
+	<g>
+		<path fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4" stroke-miterlimit="10" d="M129.893,128.064
+			c0,5.287-1.152,10.078-3.457,14.375s-5.371,7.631-9.199,10c-2.656,1.641-5.619,2.826-8.887,3.555
+			c-3.268,0.73-7.572,1.094-12.91,1.094H80.752V98.924h14.531c5.678,0,10.189,0.41,13.535,1.23s6.178,1.947,8.496,3.379
+			c3.959,2.475,7.045,5.77,9.258,9.883C128.785,117.531,129.893,122.414,129.893,128.064z M121.807,127.947
+			c0-4.557-0.795-8.398-2.383-11.523s-3.959-5.586-7.109-7.383c-2.291-1.301-4.727-2.207-7.305-2.715s-5.664-0.762-9.258-0.762
+			h-7.266v44.883h7.266c3.725,0,6.973-0.273,9.746-0.82s5.318-1.563,7.637-3.047c2.891-1.848,5.059-4.283,6.504-7.305
+			C121.084,136.256,121.807,132.479,121.807,127.947z"/>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
+	<g>
+	</g>
 </g>
 </svg>

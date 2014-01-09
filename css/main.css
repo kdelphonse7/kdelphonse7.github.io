@@ -61,8 +61,16 @@ a {
   background-image: url('../img/noise-lp.png');
 }
 
+#main-header-wrapper {
+  border-bottom: 1px solid #2C2C2C;
+}
+
 #main-header-wrapper p {
   color: white;  
+}
+
+#menu-text-container {
+ display: none;
 }
 
 #logo-area {
@@ -187,7 +195,7 @@ ul.sub-nav-ul a {
   
   ul.sub-nav-ul {
     z-index: 1;
-    padding-top: 0.3em;
+    padding-top: 0em;    
   }  
   
 }
@@ -208,6 +216,20 @@ ul.sub-nav-ul a {
 @media screen and (max-width: 500px) {
   #main-header-wrapper {
     width: 100%;
+    border-bottom: 0px;
+  }  
+  
+  #menu-text-container {
+    display: block;
+    background-color: #F5F5F5;
+    text-align: center;
+    padding: 0.8em 0em;
+    cursor: pointer;
+    border-bottom: 1px solid #8C8C8C;
+  }
+  
+  #main-header-wrapper #nav-button {
+    color: #2C2C2C;
   }
 
   #main-logo {
@@ -220,9 +242,9 @@ ul.sub-nav-ul a {
   
   #main-nav {
     width: 100%;
-    padding: 1em 0em;
     background-color: #F5F5F5; 
-    text-align: left;   
+    text-align: left;
+    padding: 0.5em 0em;   
   }
   
   #main-nav li {
