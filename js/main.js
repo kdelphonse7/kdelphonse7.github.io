@@ -3,6 +3,40 @@
   var $html = $('html');
   $html.removeClass('no-js').addClass('js');
 
+  //Get the main stylesheet
+  ///console.log($('#main-styles'));
+  var mainStylesHtml = $('#main-styles')[0],
+  mainStyles = mainStylesHtml.sheet;
+
+  //Gather the rules
+  ///console.log('main styles ', mainStyles);  
+  var mainRules;
+  ///console.log(document.styleSheets[1]);
+  if (mainStyles.cssRules)
+    mainRules = mainStyles.cssRules;
+  else if (mainStyles.rules)
+    mainRules = mainStyles.rules;
+
+  ///console.log('mainRules is ', mainRules);
+
+  var theKey;
+  for (key in mainRules) {
+    //Find rule in stylesheet and remove it
+    //Hover rule on 'ul' interferes with jQuery ui menu
+    if (typeof mainRules[key].selectorText != 'undefined') {
+      if ("#main-nav ul li:hover > ul" === (mainRules[key].selectorText)) {
+        ///console.log(key);
+        theKey = key * 1;
+      }
+    }
+  }
+  
+  //Remove the rule
+  if (mainStyles.deleteRule)
+    mainStyles.deleteRule(theKey);
+  else
+    mainStyles.removeRule(theKey);
+
   //Alias the elements for the nav menu
   var $flySubMenus = $('ul.fly-out');
   var subLevelStr = 'sub-level';
@@ -11,7 +45,12 @@
   var $mainMenu = $('#main-nav-outer');
 
   function createFlyoutMenu() {
-    $mainMenu.menu({ position: { my: "left top", at: "left-1 top+25" } });
+    $mainMenu.menu({
+      position : {
+        my : "left top",
+        at : "left-1 top+25"
+      }
+    });    
   }
 
   //Create the flyout menu
@@ -19,23 +58,23 @@
   createFlyoutMenu();
 
   var innerWidth,
-    $document = $(document),
-    $window = $(window),
-    lastWindowWidth = $window.width(),
-    $ulNav = $('#main-nav'),
-    breakPoint = 500,
-    largerThanBreak = breakPoint + 1,
-    clickStatus = false,
-    $navButton = $('#nav-button'),
-    flyOutMenuPresent = true,
-    subMenuPresent = false,
-    hasClickedSubMenus = false,
-    subMenuPhotographyClickedShowing = false,
-    subMenuCinematographyClickedShowing = false,
-    $navPhotography = $('#nav-a-photography'),
-    $navCinematography = $('#nav-a-cinematography'),
-    $navPhotographyUl = $navPhotography.siblings(':hidden'),
-    $navCinematographyUl = $navCinematography.siblings(':hidden');
+  $document = $(document),
+  $window = $(window),
+  lastWindowWidth = $window.width(),
+  $ulNav = $('#main-nav'),
+  breakPoint = 500,
+  largerThanBreak = breakPoint + 1,
+  clickStatus = false,
+  $navButton = $('#nav-button'),
+  flyOutMenuPresent = true,
+  subMenuPresent = false,
+  hasClickedSubMenus = false,
+  subMenuPhotographyClickedShowing = false,
+  subMenuCinematographyClickedShowing = false,
+  $navPhotography = $('#nav-a-photography'),
+  $navCinematography = $('#nav-a-cinematography'),
+  $navPhotographyUl = $navPhotography.siblings(':hidden'),
+  $navCinematographyUl = $navCinematography.siblings(':hidden');
 
   function checkBreakPoint(dim, lastdim, breakPoint, status, elem) {
     if ((dim <= lastdim) && (dim <= breakPoint)) {
@@ -54,16 +93,16 @@
       if (flyOutMenuPresent) {
         $mainMenu.menu('destroy');
         $mainMenu
-          .children()
-          .children("ul.sub-nav-ul")
-          .removeClass("sub-level")
-          .attr("style", "");
+        .children()
+        .children("ul.sub-nav-ul")
+        .removeClass("sub-level")
+        .attr("style", "");
 
         //Menu not clicked and no submenus clicked
         if (!status && !hasClickedSubMenus) {
           $flySubMenus.hide();
         } else {
-          //Hide both submenus 	
+          //Hide both submenus
           $navPhotographyUl.hide();
           $navCinematographyUl.hide();
           //Restore the original state of submenus
@@ -84,7 +123,7 @@
 
       //Less than width breakpoint
       //Also make sure the nav button was not clicked before
-      //Hide the menus            
+      //Hide the menus
       checkBreakPoint(innerWidth, lastWindowWidth,
         breakPoint, clickStatus, $ulNav);
 
@@ -108,7 +147,7 @@
   //Trigger for performing adjustments on browser load
   $window.trigger('resize.kdSite');
 
-  //For the menu button click action  
+  //For the menu button click action
   $navButton.on('click.kdSite', function () {
     if ($ulNav.is(":hidden")) {
       $ulNav.slideDown();
@@ -121,22 +160,24 @@
 
   //For submenu hiding and showing
   $mainMenu.on('click.kdSite2', 'a', function (evt) {
-    var evtTarget = evt.target,
+  
+    //Realign the current target to the parent link    
+    var evtTarget = $(evt.target).parent().parent()[0],
       evtTargetId = evtTarget.id;
 
     //Menu items with submenus should not lead anywhere
-    if(evtTargetId == "nav-a-photography" || 
+    if (evtTargetId == "nav-a-photography" ||
       evtTargetId == "nav-a-cinematography") {
       evt.preventDefault();
     }
 
-    //Tracking submenus clicked  
-    //Only record keep if menu icon is present  
+    //Tracking submenus clicked
+    //Only record keep if menu icon is present
     if (!$navButton.is(":hidden")) {
       hasClickedSubMenus = true;
-      
-        var $evtTarget = $(evtTarget),
-        $evtTargetSiblingsHidden = $evtTarget.siblings(':hidden');
+
+      var $evtTarget = $(evtTarget),
+      $evtTargetSiblingsHidden = $evtTarget.siblings(':hidden');
 
       //Toggle the state of submenus
       if ($evtTargetSiblingsHidden.length == 1) {
@@ -148,7 +189,6 @@
       }
 
       //Track the state of menu
-      
       if (evtTargetId == "nav-a-photography") {
         //console.log('is nav photo');
         if (!subMenuPhotographyClickedShowing) {
