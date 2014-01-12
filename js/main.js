@@ -3,15 +3,15 @@
   var $html = $('html');
   $html.removeClass('no-js').addClass('js');
 
-  //Get the main stylesheet
+
   ///console.log($('#main-styles'));
   var mainStylesHtml = $('#main-styles')[0],
   mainStyles = mainStylesHtml.sheet;
 
-  //Gather the rules
-  ///console.log('main styles ', mainStyles);  
+  ///console.log('main styles ', mainStyles);
+  
   var mainRules;
-  ///console.log(document.styleSheets[1]);
+  //console.log(document.styleSheets[1]);
   if (mainStyles.cssRules)
     mainRules = mainStyles.cssRules;
   else if (mainStyles.rules)
@@ -21,36 +21,39 @@
 
   var theKey;
   for (key in mainRules) {
-    //Find rule in stylesheet and remove it
-    //Hover rule on 'ul' interferes with jQuery ui menu
+
     if (typeof mainRules[key].selectorText != 'undefined') {
       if ("#main-nav ul li:hover > ul" === (mainRules[key].selectorText)) {
-        ///console.log(key);
+        //console.log(key);
         theKey = key * 1;
+        //console.log(' the typeof key is ', (typeof theKey));
       }
     }
   }
-  
-  //Remove the rule
+  //removeRule
   if (mainStyles.deleteRule)
     mainStyles.deleteRule(theKey);
   else
     mainStyles.removeRule(theKey);
+
 
   //Alias the elements for the nav menu
   var $flySubMenus = $('ul.fly-out');
   var subLevelStr = 'sub-level';
   $flySubMenus.addClass(subLevelStr);
 
-  var $mainMenu = $('#main-nav-outer');
+  var $mainMenu = $('#main-nav-outer');  
+  var $navPhotography = $('#nav-a-photography');
+  var ulHeight = $navPhotography.parent().height();
+    ulAt = "left, top+" + (ulHeight + 2) ;
 
-  function createFlyoutMenu() {
+  function createFlyoutMenu() {         
     $mainMenu.menu({
       position : {
         my : "left top",
-        at : "left-1 top+25"
+        at : ulAt
       }
-    });    
+    });      
   }
 
   //Create the flyout menu
@@ -71,7 +74,6 @@
   hasClickedSubMenus = false,
   subMenuPhotographyClickedShowing = false,
   subMenuCinematographyClickedShowing = false,
-  $navPhotography = $('#nav-a-photography'),
   $navCinematography = $('#nav-a-cinematography'),
   $navPhotographyUl = $navPhotography.siblings(':hidden'),
   $navCinematographyUl = $navCinematography.siblings(':hidden');
@@ -161,7 +163,7 @@
   //For submenu hiding and showing
   $mainMenu.on('click.kdSite2', 'a', function (evt) {
   
-    //Realign the current target to the parent link    
+    //Realign the target to the parent link
     var evtTarget = $(evt.target).parent().parent()[0],
       evtTargetId = evtTarget.id;
 
@@ -189,6 +191,7 @@
       }
 
       //Track the state of menu
+
       if (evtTargetId == "nav-a-photography") {
         //console.log('is nav photo');
         if (!subMenuPhotographyClickedShowing) {
