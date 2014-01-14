@@ -278,12 +278,20 @@ ul.sub-nav-ul li.ui-menu-item {
     padding: 1em 0em;
     border-bottom: 1px solid #808080;
   }
+  
+  #main-nav-outer {
+    width: 99%;
+  }
 
   #main-nav-outer > li {
     clear: both;
     float: none;
     padding: 0em;
     margin-left: 0em;
+  }
+  
+  #main-nav-outer > li > a {
+    padding: 0em;
   }
 
   #main-nav ul ul {
@@ -314,25 +322,26 @@ ul.sub-nav-ul li.ui-menu-item {
     padding: 0.05em;
   }
 
-  #main-nav-outer ul.sub-nav-ul .a-inner-span {
-    padding-left: 29%;
-  }
-
   #main-nav-outer span {
     display: block;
-  }
+  }  
 
   #main-nav-outer li {
     background-image: none;
   }
 
   #main-nav-outer .a-outer-span {
-    width: 50%;
+    width: 100%;
     margin: auto;
   }
 
   #main-nav-outer .a-inner-span {
-    padding-left: 20%;
+    padding-left: 35%;
+  }
+  
+  #main-nav-outer ul.sub-nav-ul .a-inner-span {
+    width: 60%;
+    padding-left: 40%;
   }
 
   .main-nav-ul a {

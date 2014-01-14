@@ -3,80 +3,82 @@
   var $html = $('html');
   $html.removeClass('no-js').addClass('js');
 
-
-  ///console.log($('#main-styles'));
+  //Remove stylesheet rule
   var mainStylesHtml = $('#main-styles')[0],
+    mainStyles;
+  
+  if (mainStylesHtml.sheet) {
+    mainStylesHtml.sheet
+  } else if (mainStylesHtml.styleSheet) {
+    mainStylesHtml.styleSheet
+  }
   mainStyles = mainStylesHtml.sheet;
 
-  ///console.log('main styles ', mainStyles);
-  
   var mainRules;
-  //console.log(document.styleSheets[1]);
   if (mainStyles.cssRules)
     mainRules = mainStyles.cssRules;
   else if (mainStyles.rules)
     mainRules = mainStyles.rules;
 
-  ///console.log('mainRules is ', mainRules);
-
   var theKey;
   for (key in mainRules) {
-
     if (typeof mainRules[key].selectorText != 'undefined') {
-      if ("#main-nav ul li:hover > ul" === (mainRules[key].selectorText)) {
-        //console.log(key);
+      if ("#main-nav ul li:hover > ul" == 
+      (mainRules[key].selectorText)) {
         theKey = key * 1;
-        //console.log(' the typeof key is ', (typeof theKey));
       }
     }
   }
-  //removeRule
+
   if (mainStyles.deleteRule)
     mainStyles.deleteRule(theKey);
   else
     mainStyles.removeRule(theKey);
-
 
   //Alias the elements for the nav menu
   var $flySubMenus = $('ul.fly-out');
   var subLevelStr = 'sub-level';
   $flySubMenus.addClass(subLevelStr);
 
-  var $mainMenu = $('#main-nav-outer');  
+  var $mainMenu = $('#main-nav-outer');
   var $navPhotography = $('#nav-a-photography');
-  var ulHeight = $navPhotography.parent().height();
-    ulAt = "left, top+" + (ulHeight + 2) ;
-
-  function createFlyoutMenu() {         
+  
+  function getLiHeight() {
+    var ulHeight = $navPhotography.parent().height();        
+    var ulAt = "left, top+" + (ulHeight + 2);
+    return ulAt;
+  }
+  
+  function createFlyoutMenu(liHeight) {
     $mainMenu.menu({
-      position : {
-        my : "left top",
-        at : ulAt
+      position: {
+        my: "left top",
+        at: liHeight
       }
-    });      
+    });    
   }
 
   //Create the flyout menu
   //Assuming the page is viewed on a large screen initially
-  createFlyoutMenu();
+  createFlyoutMenu(getLiHeight());
 
   var innerWidth,
-  $document = $(document),
-  $window = $(window),
-  lastWindowWidth = $window.width(),
-  $ulNav = $('#main-nav'),
-  breakPoint = 500,
-  largerThanBreak = breakPoint + 1,
-  clickStatus = false,
-  $navButton = $('#nav-button'),
-  flyOutMenuPresent = true,
-  subMenuPresent = false,
-  hasClickedSubMenus = false,
-  subMenuPhotographyClickedShowing = false,
-  subMenuCinematographyClickedShowing = false,
-  $navCinematography = $('#nav-a-cinematography'),
-  $navPhotographyUl = $navPhotography.siblings(':hidden'),
-  $navCinematographyUl = $navCinematography.siblings(':hidden');
+    $document = $(document),
+    $window = $(window),
+    lastWindowWidth = $window.width(),
+    $ulNav = $('#main-nav'),
+    breakPoint = 500,
+    largerThanBreak = breakPoint + 1,
+    clickStatus = false,
+    $navButton = $('#nav-button'),
+    flyOutMenuPresent = true,
+    subMenuPresent = false,
+    hasClickedSubMenus = false,
+    subMenuPhotographyClickedShowing = false,
+    subMenuCinematographyClickedShowing = false,
+    $navCinematography = $('#nav-a-cinematography'),
+    $navPhotographyUl = $navPhotography.siblings(':hidden'),
+    $navCinematographyUl = $navCinematography.siblings(':hidden');
 
   function checkBreakPoint(dim, lastdim, breakPoint, status, elem) {
     if ((dim <= lastdim) && (dim <= breakPoint)) {
@@ -95,10 +97,10 @@
       if (flyOutMenuPresent) {
         $mainMenu.menu('destroy');
         $mainMenu
-        .children()
-        .children("ul.sub-nav-ul")
-        .removeClass("sub-level")
-        .attr("style", "");
+          .children()
+          .children("ul.sub-nav-ul")
+          .removeClass("sub-level")
+          .attr("style", "");
 
         //Menu not clicked and no submenus clicked
         if (!status && !hasClickedSubMenus) {
@@ -130,16 +132,16 @@
         breakPoint, clickStatus, $ulNav);
 
     } else {
+      if ($ulNav.is(":hidden")) {
+        $ulNav.show();
+      }
       //Restore the flyout if it is not present
       if (!flyOutMenuPresent) {
         $flySubMenus.addClass('sub-level');
         //Bring the flyout menu back
-        createFlyoutMenu();
+        createFlyoutMenu(getLiHeight());
         flyOutMenuPresent = true;
-      }
-      if ($ulNav.is(":hidden")) {
-        $ulNav.show();
-      }
+      }      
     }
 
     //Current width is now the last window width
@@ -162,7 +164,7 @@
 
   //For submenu hiding and showing
   $mainMenu.on('click.kdSite2', 'a', function (evt) {
-  
+
     //Realign the target to the parent link
     var evtTarget = $(evt.target).parent().parent()[0],
       evtTargetId = evtTarget.id;
@@ -179,7 +181,7 @@
       hasClickedSubMenus = true;
 
       var $evtTarget = $(evtTarget),
-      $evtTargetSiblingsHidden = $evtTarget.siblings(':hidden');
+        $evtTargetSiblingsHidden = $evtTarget.siblings(':hidden');
 
       //Toggle the state of submenus
       if ($evtTargetSiblingsHidden.length == 1) {
@@ -191,16 +193,13 @@
       }
 
       //Track the state of menu
-
       if (evtTargetId == "nav-a-photography") {
-        //console.log('is nav photo');
         if (!subMenuPhotographyClickedShowing) {
           subMenuPhotographyClickedShowing = true;
         } else {
           subMenuPhotographyClickedShowing = false;
         }
       } else if (evtTargetId == "nav-a-cinematography") {
-        //console.log('is nav cine');
         if (!subMenuCinematographyClickedShowing) {
           subMenuCinematographyClickedShowing = true;
         } else {
@@ -222,7 +221,7 @@
     //Backstretch plugin
     $.backstretch("./img/Fog.jpg");
   } else {
-    //Remove event listeners for old ie
+    //Remove event listeners for old Ie
     $window.off('resize.kdSite');
     $navButton.off('click.kdSite');
   }
