@@ -184,6 +184,43 @@ ul.sub-nav-ul li.ui-menu-item {
   width: 100%;
 }
 
+#main-page-quote-area {
+  position: relative;
+  width: 33%;
+  margin-left: 15%;
+  padding: 2%;
+  margin-top: 10%;
+  color: #fff;
+  font-size: 105%; 
+}
+
+#main-page-quote {
+  font-family: garamond;  
+  line-height: 1.5em;
+  background-color: #4F4F4F;
+  text-shadow: 1px 0px 2px #2E2E2E; 
+}
+
+#main-page-quote-front {
+  float: left;
+  padding: 4% 7% 2%
+}
+
+#main-page-quote-front em {
+  padding-left: 1.5%;
+}
+
+#quote-author {
+  margin-top: 2%;
+  text-align: right;
+  padding: 0 10% 2%;
+  float: right;
+}
+
+#main-page-quote-front, #quote-author {
+  /*background-color: #fff; */
+}  
+
 @media screen and (max-width: 1000px) {
   #main-header-wrapper {
     width: 85%;
@@ -218,6 +255,17 @@ ul.sub-nav-ul li.ui-menu-item {
   ul.sub-nav-ul {
     z-index: 1;
   }
+}
+
+@media screen and (max-width: 880px) {
+  #main-page-quote {
+    background-color: transparent;
+  }
+  
+  #main-page-quote-area {
+    width: 70%;
+    padding: 0%;
+  } 
 }
 
 @media screen and (max-width: 800px) {
