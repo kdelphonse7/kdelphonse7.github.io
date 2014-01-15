@@ -216,10 +216,12 @@
 
   //Only use background stretch for newer browsers
   if (!$html.hasClass('oldIE')) {
-    //Hide the css background fallback when javascript is enabled
-    $('#bg').addClass('hideThisThing');
-    //Backstretch plugin
-    $.backstretch("./img/Fog.jpg");
+    if($('#bg').length) {
+      //Hide the css background fallback when javascript is enabled
+      $('#bg').addClass('hideThisThing');
+      //Backstretch plugin
+      $.backstretch("./img/Fog.jpg");
+    }
   } else {
     //Remove event listeners for old Ie
     $window.off('resize.kdSite');
