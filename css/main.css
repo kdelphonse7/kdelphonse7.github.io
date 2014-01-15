@@ -188,6 +188,10 @@ ul.sub-nav-ul li.ui-menu-item {
   width: 100%;
 }
 
+main p {
+  font-family: garamond;
+}
+
 #main-page-quote-area {
   position: relative;
   width: 33%;
