@@ -73,7 +73,7 @@
     $window = $(window),
     lastWindowWidth = $window.width(),
     $ulNav = $('#main-nav'),
-    breakPoint = 500,
+    breakPoint = 850,
     largerThanBreak = breakPoint + 1,
     clickStatus = false,
     $navButton = $('#nav-button'),
