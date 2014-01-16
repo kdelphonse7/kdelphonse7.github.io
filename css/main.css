@@ -15,7 +15,7 @@ body, html {
 
 body {
   overflow-y: scroll;
-  font-family: 'loveloblack';
+  font-family: 'loveloblack', sans-serif;
   word-wrap: break-word;
 }
 
@@ -189,7 +189,7 @@ ul.sub-nav-ul li.ui-menu-item {
 }
 
 main p {
-  font-family: Garamond, "Times New Roman", serif;
+  font-family: Garamond, Georgia, "Times New Roman", serif;
   line-height: 1.5em;
 }
 
@@ -203,8 +203,7 @@ main p {
   font-size: 105%; 
 }
 
-#main-page-quote {
-  font-family: garamond;  
+#main-page-quote { 
   line-height: 1.5em;
   background-color: #4F4F4F;
   text-shadow: 1px 0px 2px #2E2E2E; 
@@ -271,6 +270,10 @@ main p {
   #main-page-quote-area {
     width: 70%;
     padding: 0%;
+  }
+  
+  #quote-author {
+    float: none;
   } 
 }
 

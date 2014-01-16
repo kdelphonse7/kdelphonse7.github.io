@@ -2,6 +2,12 @@
   //Add class on html when javascript is enabled
   var $html = $('html');
   $html.removeClass('no-js').addClass('js');
+  
+  
+  //Use svg logo if supported
+  if (Modernizr.svg) {
+    $("#main-logo").attr("src", "img/KdLogo.svg");
+  }
 
   //Remove stylesheet rule
   var mainStylesHtml = $('#main-styles')[0],
@@ -208,11 +214,6 @@
       }
     }
   });
-
-  //Use svg logo if supported
-  if (Modernizr.svg) {
-    $("#main-logo").attr("src", "img/KdLogo.svg");
-  }
 
   //Only use background stretch for newer browsers
   if (!$html.hasClass('oldIE')) {
