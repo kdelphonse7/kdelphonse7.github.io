@@ -1,7 +1,6 @@
 .FitMyVideo-container {
   position: relative;
   padding-bottom: 56.25%;
-  margin-bottom: 5%;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
@@ -17,11 +16,22 @@
   height: 100%;
 }
 
+#main-content {
+  margin-left: 10%;
+}
+
 .a-video {
-  margin: 5% 15%;  
-  width: 70%;
+  width: 100%;
 }
 
 main h1 {
-  padding-bottom: 2%;
+  margin: 1em 0em 0.5em;
+}
+
+main p {
+  padding: 2em 0em;
+}
+
+#bottom-spacer {
+  height: 3em;
 }
