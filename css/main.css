@@ -203,9 +203,22 @@ ul.sub-nav-ul li.ui-menu-item {
   width: 100%;
 }
 
+#main-content {
+  margin-left: 10%;
+}
+
 main p {
   font-family: crimson_textroman, Garamond, Georgia, "Times New Roman", serif;
   line-height: 1.5em;
+}
+
+main h1 {
+  margin: 2em 0em 0.5em;
+  font-size: 150%;
+}
+
+#page-location {
+  font-size: 170%;
 }
 
 #main-page-quote-area {
@@ -285,6 +298,7 @@ main p {
   #main-logo {
     width: 80px;
     height: 80px;
+    margin-top: 1.5%;
   }
 
   #logo-text {

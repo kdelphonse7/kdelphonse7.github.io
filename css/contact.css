@@ -1,0 +1,21 @@
+#contact-info-area {
+  margin-left: 10%;
+  margin-top: 2.5em;
+}
+
+.contact-part {
+  margin-bottom: 1em;
+}
+
+.contact-header {
+  font-family: 'loveloblack', sans-serif;
+}
+
+.contact-header, .contact-value {
+  float: left;
+}
+
+.contact-value {
+  clear: both;
+  padding-left: 1em;
+}
