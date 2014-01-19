@@ -12,6 +12,14 @@
   <link href="css/jquery.ui.menu.css" rel="stylesheet" type="text/css">
   <link id="main-styles" href="css/main.css" rel="stylesheet" type="text/css" />
   
+  
+  
+  <link href="css/galleria.classic.css" rel="stylesheet" />
+  <style>
+     #galleria{height:500px}
+  </style>
+  
+  
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
 	<![endif]-->  
@@ -21,7 +29,17 @@
   
   <script src="js/modernizr.custom.37132.js"></script>  
   <script src="js/main.js"></script>
-  
+  <script src="js/photography/galleria.js"></script>
+  <script>
+     // Load the classic theme
+    Galleria.loadTheme('js/photography/galleria.classic.js');
+    $(window).ready(function() {
+      
+      // Initialize Galleria
+      Galleria.run('#galleria');
+    });
+    
+  </script>
   <!--[if lt IE 9]>
   
   <![endIf]-->
@@ -160,7 +178,58 @@
         <div class="ym-g80"  id="main-content">
           
         <h1 id="page-location">Photography > Gallery</h1>  
-                      
+           <div class="content">        
+
+        <div id="galleria">
+            <ul>
+              
+              <li>
+               <a href="img/photography/gallery/dark-cube-med.jpg">
+                <img alt="dark-cube" src="img/photography/gallery/dark-cube-small.jpg" data-big="img/photography/gallery/dark-cube-large.jpg">
+            </a>
+             </li>
+             
+             <li>
+               <a href="img/photography/gallery/girl-in-shrubbery-med.jpg">
+                <img alt="girl-in-shrubbery" src="img/photography/gallery/girl-in-shrubbery-small.jpg" data-big="img/photography/gallery/girl-in-shrubbery-large.jpg">
+            </a>
+             </li>
+             
+             <li>
+              <a href="img/photography/gallery/new-montogomery-med.jpg">
+                <img alt="new-montgomery" src="img/photography/gallery/new-montogomery-small.jpg" data-big="img/photography/gallery/new-montogomery-large.jpg">
+            </a>
+             </li>
+             
+             <li>
+              <a href="img/photography/gallery/prey-pine-st-med.jpg">
+                <img alt="prey-pine-st" src="img/photography/gallery/prey-pine-st-small.jpg" data-big="img/photography/gallery/prey-pine-st-large.jpg">
+            </a>
+             </li>
+
+             <li>
+               <a href="img/photography/gallery/prey-pine-st-upper-med.jpg">
+                <img alt="prey-pine-st-upper" src="img/photography/gallery/prey-pine-st-upper-small.jpg" data-big="img/photography/gallery/prey-pine-st-upper-large.jpg">
+            </a>
+             </li>
+             
+             <li>
+               <a href="img/photography/gallery/sf-landscape-tl-02-med.jpg">
+                <img alt="sf-landscape-tl-02" src="img/photography/gallery/sf-landscape-tl-02-small.jpg" data-big="img/photography/gallery/sf-landscape-tl-02-large.jpg">
+            </a>
+             </li>
+            
+            </ul>
+            
+            
+
+            
+            
+            
+        </div>
+
+        
+    </div>           
         </div>
     </div>
     </div>
