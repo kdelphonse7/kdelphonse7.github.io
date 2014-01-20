@@ -10,15 +10,9 @@
 
   <link href="css/base.min.css" rel="stylesheet" type="text/css" />
   <link href="css/jquery.ui.menu.css" rel="stylesheet" type="text/css">
-  <link id="main-styles" href="css/main.css" rel="stylesheet" type="text/css" />
-  
-  
-  
+  <link id="main-styles" href="css/main.css" rel="stylesheet" type="text/css" />    
   <link href="css/galleria.classic.css" rel="stylesheet" />
-  <style>
-     #galleria{height:500px}
-  </style>
-  
+  <link href="css/galleria-custom.css" rel="stylesheet" />
   
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -27,25 +21,14 @@
   <script src="js/jquery-1.10.2.min.js"></script>
   <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
   
-  <script src="js/modernizr.custom.37132.js"></script>  
+  <script src="js/modernizr.custom.37132.js"></script> 
+  <script src="js/utils.js"></script> 
   <script src="js/main.js"></script>
-  <script src="js/photography/galleria.js"></script>
-  <script>
-     // Load the classic theme
-    Galleria.loadTheme('js/photography/galleria.classic.js');
-    $(window).ready(function() {
-      
-      // Initialize Galleria
-      Galleria.run('#galleria');
-    });
+  <script src="js/photography/galleria.min.js"></script>
+  <script src="js/photography/galleriaRun.js"></script>
     
-  </script>
-  <!--[if lt IE 9]>
-  
-  <![endIf]-->
-
-
-  
+  <!--[if lt IE 9]>  
+  <![endIf]-->  
 </head>
 
 <body id="noise-bg">
@@ -175,8 +158,7 @@
     <div class="ym-wrapper">
       <div class="ym-box">
         
-        <div class="ym-g80"  id="main-content">
-          
+        <div class="ym-g80"  id="main-content"> 
         <h1 id="page-location">Photography > Gallery</h1>  
            <div class="content">        
 

@@ -2,45 +2,25 @@
   //Add class on html when javascript is enabled
   var $html = $('html');
   $html.removeClass('no-js').addClass('js');
-  
-  
+
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
   //Use svg logo if supported
   if (Modernizr.svg) {
     $("#main-logo").attr("src", "img/KdLogo.svg");
   }
 
-  //Remove stylesheet rule
-  var mainStylesHtml = $('#main-styles')[0],
-    mainStyles;
-  
-  if (mainStylesHtml.sheet) {
-    mainStylesHtml.sheet
-  } else if (mainStylesHtml.styleSheet) {
-    mainStylesHtml.styleSheet
-  }
-  mainStyles = mainStylesHtml.sheet;
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  var mainRules;
-  if (mainStyles.cssRules)
-    mainRules = mainStyles.cssRules;
-  else if (mainStyles.rules)
-    mainRules = mainStyles.rules;
+  //Get Rule from Stylesheet and Remove it
+  var styleSelector = '#main-styles';
+  var mainRules = u.ss.getSS(styleSelector);
+  var ruleNumber = u.ss.getSSRule(mainRules, "#main-nav ul li:hover > ul");
+  u.ss.deleteRule(ruleNumber);
 
-  var theKey;
-  for (key in mainRules) {
-    if (typeof mainRules[key].selectorText != 'undefined') {
-      if ("#main-nav ul li:hover > ul" == 
-      (mainRules[key].selectorText)) {
-        theKey = key * 1;
-      }
-    }
-  }
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
-  if (mainStyles.deleteRule)
-    mainStyles.deleteRule(theKey);
-  else
-    mainStyles.removeRule(theKey);
-
+  //Set flyout menu
   //Alias the elements for the nav menu
   var $flySubMenus = $('ul.fly-out');
   var subLevelStr = 'sub-level';
@@ -48,20 +28,20 @@
 
   var $mainMenu = $('#main-nav-outer');
   var $navPhotography = $('#nav-a-photography');
-  
+
   function getLiHeight() {
-    var ulHeight = $navPhotography.parent().height();        
+    var ulHeight = $navPhotography.parent().height();
     var ulAt = "left, top+" + (ulHeight + 2);
     return ulAt;
   }
-  
+
   function createFlyoutMenu(liHeight) {
     $mainMenu.menu({
       position: {
         my: "left top",
         at: liHeight
       }
-    });    
+    });
   }
 
   //Create the flyout menu
@@ -147,7 +127,7 @@
         //Bring the flyout menu back
         createFlyoutMenu(getLiHeight());
         flyOutMenuPresent = true;
-      }      
+      }
     }
 
     //Current width is now the last window width
@@ -215,9 +195,13 @@
     }
   });
 
+  //+++++++++++++++++++++++++++++++++++++++++++++++++++
+  //Backstretch use
+  //Remove listeners for Old Ie
+
   //Only use background stretch for newer browsers
   if (!$html.hasClass('oldIE')) {
-    if($('#bg').length) {
+    if ($('#bg').length) {
       //Hide the css background fallback when javascript is enabled
       $('#bg').addClass('hideThisThing');
       //Backstretch plugin
