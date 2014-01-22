@@ -214,12 +214,12 @@ main p {
 }
 
 main h1 {
-  margin: 2em 0em 0.5em;
+  margin: 2em 0em 1em;
   font-size: 150%;
 }
 
 #page-location {
-  font-size: 170%;
+  font-size: 160%;
 }
 
 #main-page-quote-area {
@@ -443,7 +443,7 @@ main h1 {
   
   #main-nav-outer ul.sub-nav-ul .a-inner-span {
     width: 60%;
-    padding-left: 40%;
+    padding-left: 37%;
   }
 
   .main-nav-ul a {
@@ -456,5 +456,10 @@ main h1 {
 @media screen and (max-width: 600px) {
   #main-page-quote-front {
     padding-right: 2%;
+  }
+  
+  #main-nav-outer ul.sub-nav-ul .a-inner-span {
+    width: 60%;
+    padding-left: 40%;
   }
 }

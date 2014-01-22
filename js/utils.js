@@ -23,7 +23,7 @@ u.ss = {
 
     if (this.mainStyles.cssRules)
       this.mainRules = this.mainStyles.cssRules;
-    else if (mainStyles.rules)
+    else if (this.mainStyles.rules)
       this.mainRules = this.mainStyles.rules;
 
     return this.mainRules;
