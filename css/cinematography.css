@@ -1,7 +1,7 @@
 .FitMyVideo-container {
   position: relative;
   padding-bottom: 56.25%;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
   padding-top: 30px;
   height: 0;
   overflow: hidden;
@@ -21,10 +21,48 @@ main p {
   padding: 0em 0em 2em;
 }
 
+#videoInfo h1 {
+  margin: 0em 0em 0.5em;
+}
+
 .a-video {
   width: 100%;
 }
 
+#video-thumbs {
+  margin-bottom: 5%;
+}
+
 #video-thumbs li {
   float: left;
+}
+
+#video-thumbs img {
+  cursor: pointer;
+  border: 1px solid transparent;  
+  padding: 0.3em;
+}
+
+#video-thumbs img.active {
+  border: 1px solid #808080; 
+}
+
+#video-thumbs img:hover {
+  cursor: pointer;
+  border: 1px solid #000;
+  background-color: #c8c8c8;
+}
+
+#video-descriptions {
+  height: 110px;
+  overflow: hidden;
+  margin-bottom: 3%;
+  background-color: #F0F0F0;
+  padding: 2%;
+}
+
+@media screen and (max-width: 850px) {
+  #video-descriptions {
+    margin: 1em 0 2em;
+  }
 }

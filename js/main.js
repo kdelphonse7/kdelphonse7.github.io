@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿
+$(function () {
   //Add class on html when javascript is enabled
   var $html = $('html');
   $html.removeClass('no-js').addClass('js');
@@ -37,9 +38,9 @@
 
   function createFlyoutMenu(liHeight) {
     $mainMenu.menu({
-      position: {
-        my: "left top",
-        at: liHeight
+      position : {
+        my : "left top",
+        at : liHeight
       }
     });
   }
@@ -49,22 +50,22 @@
   createFlyoutMenu(getLiHeight());
 
   var innerWidth,
-    $document = $(document),
-    $window = $(window),
-    lastWindowWidth = $window.width(),
-    $ulNav = $('#main-nav'),
-    breakPoint = 850,
-    largerThanBreak = breakPoint + 1,
-    clickStatus = false,
-    $navButton = $('#nav-button'),
-    flyOutMenuPresent = true,
-    subMenuPresent = false,
-    hasClickedSubMenus = false,
-    subMenuPhotographyClickedShowing = false,
-    subMenuCinematographyClickedShowing = false,
-    $navCinematography = $('#nav-a-cinematography'),
-    $navPhotographyUl = $navPhotography.siblings(':hidden'),
-    $navCinematographyUl = $navCinematography.siblings(':hidden');
+  $document = $(document),
+  $window = $(window),
+  lastWindowWidth = $window.width(),
+  $ulNav = $('#main-nav'),
+  breakPoint = 850,
+  largerThanBreak = breakPoint + 1,
+  clickStatus = false,
+  $navButton = $('#nav-button'),
+  flyOutMenuPresent = true,
+  subMenuPresent = false,
+  hasClickedSubMenus = false,
+  subMenuPhotographyClickedShowing = false,
+  subMenuCinematographyClickedShowing = false,
+  $navCinematography = $('#nav-a-cinematography'),
+  $navPhotographyUl = $navPhotography.siblings(':hidden'),
+  $navCinematographyUl = $navCinematography.siblings(':hidden');
 
   function checkBreakPoint(dim, lastdim, breakPoint, status, elem) {
     if ((dim <= lastdim) && (dim <= breakPoint)) {
@@ -83,10 +84,10 @@
       if (flyOutMenuPresent) {
         $mainMenu.menu('destroy');
         $mainMenu
-          .children()
-          .children("ul.sub-nav-ul")
-          .removeClass("sub-level")
-          .attr("style", "");
+        .children()
+        .children("ul.sub-nav-ul")
+        .removeClass("sub-level")
+        .attr("style", "");
 
         //Menu not clicked and no submenus clicked
         if (!status && !hasClickedSubMenus) {
@@ -153,7 +154,7 @@
 
     //Realign the target to the parent link
     var evtTarget = $(evt.target).parent().parent()[0],
-      evtTargetId = evtTarget.id;
+    evtTargetId = evtTarget.id;
 
     //Menu items with submenus should not lead anywhere
     if (evtTargetId == "nav-a-photography" ||
@@ -167,7 +168,7 @@
       hasClickedSubMenus = true;
 
       var $evtTarget = $(evtTarget),
-        $evtTargetSiblingsHidden = $evtTarget.siblings(':hidden');
+      $evtTargetSiblingsHidden = $evtTarget.siblings(':hidden');
 
       //Toggle the state of submenus
       if ($evtTargetSiblingsHidden.length == 1) {
@@ -212,5 +213,4 @@
     $window.off('resize.kdSite');
     $navButton.off('click.kdSite');
   }
-
 });
