@@ -118,20 +118,14 @@
             //Remove the active border from siblings
             _this.parents().siblings().find('img').attr('class', '');
             
-            
-            //console.log(vidObj);
-            
             //There is a lasted clicked item
             if(typeof lastClicked.jElement != 'undefined') {
               //console.log('last clicked item is ', lastClicked.jElement);
             }
-            
-            
-            //console.log(vidObj.videos[72301519]);
-            
+
             var vidStuff = vidObj.videos[72301519];
             //console.log(vidStuff);
-            $f(vidStuff[0]).api('pause');
+            //$f(vidStuff[0]).api('pause');
             //vidObj.videos[]
             
             //Hiding all sibling elements
