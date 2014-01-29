@@ -4,9 +4,9 @@ $(function () {
     $galUl = $galContainer.children();
 
   var videoList = [
+    [85017535, "Peek"],
     [72301519, "Lou's Prey"],
-    [63953198, "The Approach"],
-    [85017535, "Peek"]
+    [63953198, "The Approach"]    
   ],
     videoListLen = videoList.length;
 

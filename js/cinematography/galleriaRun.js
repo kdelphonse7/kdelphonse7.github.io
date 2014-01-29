@@ -38,7 +38,7 @@
    
    var headerStuff = ["Peek - Cinematographer", "Lou's Prey - Cameraman", 'The Approach - Cinematographer'];
    
-   var textStuff = ["When Troy James decides to steal money from his boss Notorious Crime Boss Fat Reggie he becomes a marked man. Kuroda Red, a hired hitman is hot on his trail. After they finally meet the two men end up in an unexpected situation.", "A man fantasizes about ways to approach a beautiful girl, and in the end, he should've just talked to her. <br><br>An Alex Bretow Film. In association with Midnight Cry Productions. <br>Starring Taylor Fierro and Alex Bretow. <br>Directed, Written, and Edited by Alex Bretow. <br>Cinematographer and Cinematography by Kesslere Delphonse.", ""];
+   var textStuff = ["", "When Troy James decides to steal money from his boss Notorious Crime Boss Fat Reggie he becomes a marked man. Kuroda Red, a hired hitman is hot on his trail. After they finally meet the two men end up in an unexpected situation.", "A man fantasizes about ways to approach a beautiful girl, and in the end, he should've just talked to her. <br><br>An Alex Bretow Film. In association with Midnight Cry Productions. <br>Starring Taylor Fierro and Alex Bretow. <br>Directed, Written, and Edited by Alex Bretow. <br>Cinematographer and Cinematography by Kesslere Delphonse."];
       
    var textStuffLen = textStuff.length;
    
