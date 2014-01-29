@@ -2,4 +2,18 @@
 #philosophy-explanation {
    margin-left: 5%;
    margin-top: 2.5em;
+   margin-bottom: 5%;
+   width: 60%;
+}
+
+
+@media screen and (max-width: 500px) {
+
+  #philosophy-explanation {
+     margin-left: 5%;
+     margin-top: 2.5em;
+     margin-bottom: 5%;
+     width: 95%;
+  }
+
 }
