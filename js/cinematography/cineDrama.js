@@ -5,7 +5,8 @@ $(function () {
 
   var videoList = [
     [72301519, "Lou's Prey"],
-    [63953198, "The Approach"]
+    [63953198, "The Approach"],
+    [85017535, "Peek"]
   ],
     videoListLen = videoList.length;
 
