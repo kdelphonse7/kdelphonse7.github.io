@@ -83,6 +83,7 @@ main p {
 
 #header {
   background-image: url('../img/noise-lp.png');
+  position: relative;
 }
 
 #main-header-wrapper {
