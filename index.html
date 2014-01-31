@@ -13,21 +13,7 @@
   <link href="css/base.min.css" rel="stylesheet" type="text/css" />
   <link href="css/jquery.ui.menu.css" rel="stylesheet" type="text/css">
   <link id="main-styles" href="css/main.css" rel="stylesheet" type="text/css" />
-  <style>
-    .video-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-    .video-background video {
-      min-height: 100%;
-      min-width: 100%;
-    }
-  </style>
+
   <!--[if lt IE 9]>
     <script src="js/vendor/html5shiv.js"></script>
   <![endif]-->
@@ -36,18 +22,24 @@
   <script src="js/vendor/modernizr.custom.37132.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/vendor/jquery.videobackground.js"></script>
+  <script src="js/vendor/okvideo.js"></script>
   <script>
-    $(document).ready(function () {
-      $vBg = $('<div class="video-background"></div>');
-      $('body').prepend($vBg);
-      $vBg.videobackground({
-        videoSource: [
-          ['videos/mcp.webm', 'video/webm'],
-          ['videos/mcp.mp4', 'video/mp4']
-        ]
-      });
-    });
+            $(function(){
+            $.okvideo({ source: '65806940',
+                volume: 0,
+                loop: 0,
+                hd:true,
+                adproof: true,
+                annotations: false,
+                onFinished: function() { console.log('finished') },
+                unstarted: function() { console.log('unstarted') },
+                onReady: function() { console.log('onready') },
+                onPlay: function() { console.log('onplay') },
+                onPause: function() { console.log('pause') },
+                buffering: function() { console.log('buffering') },
+                cued: function() { console.log('cued') }
+            });
+        });
   </script>
   <!--[if lt IE 9]>
   
