@@ -17,7 +17,7 @@
 	"use strict";
     
   function resizeHelper() {
-   var $window = $(window);
+      var $window = $(window);
       
       var $bgImg = $('.video-background'),
         imgWidthFactor = 16,
@@ -28,13 +28,14 @@
         marginLeft,
         scaledImgHeight = imgAspectRatio * wHeight,
         $header = $('header'),
-        headerHeight = $header.height();
+        headerHeight = $header.height(),
+        maxVideoWidth = 1280;
       
       var autoWidth = function () {
         $bgImg.css({
           width: '100%',
           height: 'auto',
-          marginLeft: '0px',
+          left: '0px',
           marginTop: (headerHeight + 'px')
         });        
       };
@@ -43,36 +44,45 @@
         $bgImg.css({
           height: (wHeight + 'px'),
           width: (scaledImgHeight + 'px'),
-          marginLeft: (marginLeft + 'px'),
+          left: (marginLeft + 'px'),
           marginTop: (headerHeight + 'px')
         });         
       };
 
       var heightAdjust = function () {
-        if (wWidth >= scaledImgHeight) {
-          //Resize image to maximize height after 
-          //making sure that the width of image does not 
-          //exceed window width after image scaling
-          //Also another check to make sure that there
-          //are not too much margin border space     
-          if ((marginLeft / $bgImg.width()) >= 0.2) {
-            //Use auto width if too much margin border space
-            autoWidth();
+        
+        if(wWidth <= maxVideoWidth) {
+          if (wWidth >= scaledImgHeight) {
+            //Resize image to maximize height after 
+            //making sure that the width of image does not 
+            //exceed window width after image scaling
+            //Also another check to make sure that there
+            //are not too much margin border space     
+            if ((marginLeft / $bgImg.width()) >= 0.2) {
+              //Use auto width if too much margin border space
+              autoWidth();
+            } else {
+              heightOptimize();
+            }
           } else {
-            heightOptimize();
+            autoWidth();
           }
         } else {
-          autoWidth();
+           $bgImg.css({
+            width: (maxVideoWidth + 'px'),
+            height: 'auto',
+            left: (((wWidth - maxVideoWidth)/2)  + 'px'),
+            marginTop: (headerHeight + 'px')
+          });         
         }
+        
       };
       
       $window.on('resize.img', function () {
-        //console.log('resizing');
         wHeight = $window.height();
         wWidth = $window.width();
         //Take height away from window move image below element
         headerHeight = $header.height();
-        //console.log('header height ',  $header.height());
         wHeight = wHeight - headerHeight;
         scaledImgHeight = imgAspectRatio * wHeight;
         marginLeft = (wWidth - scaledImgHeight) / 2;

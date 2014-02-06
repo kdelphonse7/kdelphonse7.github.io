@@ -90,12 +90,13 @@
   <script src="js/vendor/modernizr.custom.37132.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/vendor/jquery.videobackground.min.js"></script>
+  <script src="js/vendor/jquery.videobackground.js"></script>
   <script>
     $(document).ready(function () {
       $('body').prepend('<div class="video-background"></div>');
       $('.video-background').videobackground({
         videoSource: [
+          ['videos/mcp2.ogv', 'video/ogg'],
           ['videos/mcp.mp4', 'video/mp4'],
           ['videos/mcp.webm', 'video/webm']
         ],

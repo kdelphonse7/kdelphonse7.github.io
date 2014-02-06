@@ -1,5 +1,5 @@
 /**
- * Galleria v 1.3.4 2014-01-08
+ * Galleria v 1.3.5 2014-01-25
  * http://galleria.io
  *
  * Licensed under the MIT license
@@ -20,7 +20,7 @@ var doc    = window.document,
     protoArray = Array.prototype,
 
 // internal constants
-    VERSION = 1.33,
+    VERSION = 1.35,
     DEBUG = true,
     TIMEOUT = 30000,
     DUMMY = false,
@@ -2600,7 +2600,7 @@ Galleria.prototype = {
             showInfo: true,
             showCounter: true,
             showImagenav: true,
-            swipe: true, // 1.2.4 -> revised in 1.3
+            swipe: 'auto', // 1.2.4 -> revised in 1.3 -> changed type in 1.3.5
             thumbCrop: true,
             thumbEventType: 'click:fast',
             thumbMargin: 0,
@@ -2652,11 +2652,6 @@ Galleria.prototype = {
             DUMMY = options.dummy;
         }
 
-        // disable swipe if no touch
-        if ( !Galleria.TOUCH ) {
-           this._options.swipe = false;
-        }
-
         // hide all content
         $( this._target ).children().hide();
 
@@ -2698,6 +2693,18 @@ Galleria.prototype = {
 
         // merge the theme & caller options
         $.extend( true, options, Galleria.theme.defaults, this._original.options, Galleria.configure.options );
+
+        // internally we use boolean for swipe
+        options.swipe = (function(s) {
+
+            if ( s == 'enforced' ) { return true; }
+
+            // legacy patch
+            if( s === false || s == 'disabled' ) { return false; }
+            
+            return !!Galleria.TOUCH;
+
+        }( options.swipe ));
 
         // disable options that arent compatible with swipe
         if ( options.swipe ) {
@@ -2887,8 +2894,7 @@ Galleria.prototype = {
             });
             this.finger = new Galleria.Finger(this.get('stage'), {
                 onchange: function(page) {
-                    self.setCounter( page ).setInfo( page ).pause();
-                    self.show(page);
+                    self.pause().show(page);
                 },
                 oncomplete: function(page) {
 
@@ -4706,11 +4712,15 @@ this.prependChild( 'info', 'myElement' );
                 self.updateCarousel();
             }
 
-            self._controls.frames[ self._controls.active ].scale({
-                width: self._stageWidth,
-                height: self._stageHeight,
-                iframelimit: self._options.maxVideoSize
-            });
+            var frame = self._controls.frames[ self._controls.active ];
+
+            if (frame) {
+                self._controls.frames[ self._controls.active ].scale({
+                    width: self._stageWidth,
+                    height: self._stageHeight,
+                    iframelimit: self._options.maxVideoSize
+                });
+            }
 
             self.trigger( Galleria.RESCALE );
 
@@ -4836,7 +4846,7 @@ this.prependChild( 'info', 'myElement' );
             window.setTimeout(function() {
 
                 // load if not ready
-                if ( !image.ready || image.image.src != src ) {
+                if ( !image.ready || $(image.image).attr('src') != src ) {
                     if ( data.iframe && !data.image ) {
                         image.isIframe = true;
                     }
