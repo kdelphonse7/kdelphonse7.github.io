@@ -4,6 +4,7 @@
  *
  * Copyright 2012, George Paterson
  * Dual licensed under the MIT or GPL Version 2 licenses.
+ * Modify by William Huey
  *
  */
 (function ($, document, window) {
@@ -14,19 +15,73 @@
 	 *
 	 */
 	"use strict";
-	function resize(that) {
-		var documentHeight = $(document).height(),
-			windowHeight = $(window).height();
-		if (that.settings.resizeTo === 'window') {
-			$(that).css('height', windowHeight);
-		} else {
-			if (windowHeight >= documentHeight) {
-				$(that).css('height', windowHeight);
-			} else {
-				$(that).css('height', documentHeight);
-			}
-		}
-	}
+    
+  function resizeHelper() {
+   var $window = $(window);
+      
+      var $bgImg = $('.video-background'),
+        imgWidthFactor = 16,
+        imgHeightFactor = 9,
+        imgAspectRatio = imgWidthFactor / imgHeightFactor,
+        wHeight, 
+        wWidth, 
+        marginLeft,
+        scaledImgHeight = imgAspectRatio * wHeight,
+        $header = $('header'),
+        headerHeight = $header.height();
+      
+      var autoWidth = function () {
+        $bgImg.css({
+          width: '100%',
+          height: 'auto',
+          marginLeft: '0px',
+          marginTop: (headerHeight + 'px')
+        });        
+      };
+      
+      var heightOptimize = function () {
+        $bgImg.css({
+          height: (wHeight + 'px'),
+          width: (scaledImgHeight + 'px'),
+          marginLeft: (marginLeft + 'px'),
+          marginTop: (headerHeight + 'px')
+        });         
+      };
+
+      var heightAdjust = function () {
+        if (wWidth >= scaledImgHeight) {
+          //Resize image to maximize height after 
+          //making sure that the width of image does not 
+          //exceed window width after image scaling
+          //Also another check to make sure that there
+          //are not too much margin border space     
+          if ((marginLeft / $bgImg.width()) >= 0.2) {
+            //Use auto width if too much margin border space
+            autoWidth();
+          } else {
+            heightOptimize();
+          }
+        } else {
+          autoWidth();
+        }
+      };
+      
+      $window.on('resize.img', function () {
+        //console.log('resizing');
+        wHeight = $window.height();
+        wWidth = $window.width();
+        //Take height away from window move image below element
+        headerHeight = $header.height();
+        //console.log('header height ',  $header.height());
+        wHeight = wHeight - headerHeight;
+        scaledImgHeight = imgAspectRatio * wHeight;
+        marginLeft = (wWidth - scaledImgHeight) / 2;
+        heightAdjust();
+      });
+      
+      $window.trigger('resize.img');
+  }    
+
 	/*
 	 * Preload function.
 	 * Allows for HTML and JavaScript designated in settings to be used while the video is preloading.
@@ -100,9 +155,7 @@
 		 *
 		 */
 		if (that.settings.resize) {
-			$(window).on('resize', function () {
-				resize(that);
-			});
+      resizeHelper();		
 		}
 		/*
 		 * Default play/pause control	
@@ -172,9 +225,7 @@
 						 * The video can expand in to the space using min-height: 100%;
 						 *
 						 */
-						if (that.settings.resize) {
-							resize(that);
-						}
+						
 						/*
 						 * Compile the different HTML5 video attributes.	
 						 *
@@ -253,8 +304,11 @@
 								}
 								loaded(that);
 							});
-						}
+						}                       
+            
 						that.data('video-options', that.settings);
+            
+            
 					}
 				} else {
 					that.settings = $.extend(true, {}, $.fn.videobackground.defaults, data, options);
@@ -322,7 +376,6 @@
 					data = that.data('video-options');
 				that.settings = $.extend(true, {}, data, options);
 				if (that.settings.initialised) {
-					resize(that);
 					that.data('video-options', that.settings);
 				}
 			});
@@ -349,7 +402,7 @@
 							that.find('.ui-video-background-mute a').off('click');
 							that.find('.ui-video-background-play a').off('click');
 						}
-						$(window).off('resize');
+						$(window).off('resize.img');
 						that.find('video').off('canplaythrough');
 						if (that.settings.controlPosition) {
 							$(that.settings.controlPosition).find('.ui-video-background').remove();

@@ -50,12 +50,10 @@ $(function () {
   createFlyoutMenu(getLiHeight());
 
   var innerWidth,
-  $document = $(document),
   $window = $(window),
   lastWindowWidth = $window.width(),
   $ulNav = $('#main-nav'),
   breakPoint = 850,
-  largerThanBreak = breakPoint + 1,
   clickStatus = false,
   $navButton = $('#nav-button'),
   flyOutMenuPresent = true,

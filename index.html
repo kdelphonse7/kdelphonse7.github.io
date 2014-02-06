@@ -13,7 +13,75 @@
   <link href="css/base.min.css" rel="stylesheet" type="text/css" />
   <link href="css/jquery.ui.menu.css" rel="stylesheet" type="text/css">
   <link id="main-styles" href="css/main.css" rel="stylesheet" type="text/css" />
+  <style>
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+      
+    video {
+      height: 100%;
+      width: 100%;
+    }
+      
+    .video-background .ui-corner-all {
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+    }
 
+    .video-background .ui-widget-content {
+      border: 1px solid #666666;
+      background-image: url('img/noise-lp.png');
+      color: #ffffff;
+    }
+
+    .video-background .ui-icon {
+      display: block;
+      text-indent: -99999px;
+      overflow: hidden;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+    }
+
+    .video-background .ui-widget-content .ui-icon {
+      background-image: url(img/ui-icons_cccccc_256x240.png);
+    }
+
+    .ui-video-background {
+      position: absolute;
+      top: 3%;
+      right: 3%;
+    }
+
+    .ui-video-background-controls {
+      margin: 0;
+    }        
+
+    .ui-video-background-controls li {     
+      padding: 10px;    
+      margin-left: 0px;
+    }
+
+    .ui-icon-play {
+      background-position: 0 -160px;
+    }
+
+    .ui-icon-pause {
+      background-position: -16px -160px;
+    }
+
+    .ui-icon-volume-off {
+      background-position: -128px -160px;
+    }
+
+    .ui-icon-volume-on {
+      background-position: -144px -160px;
+    }
+  </style>
   <!--[if lt IE 9]>
     <script src="js/vendor/html5shiv.js"></script>
   <![endif]-->
@@ -22,31 +90,25 @@
   <script src="js/vendor/modernizr.custom.37132.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/vendor/okvideo.js"></script>
+  <script src="js/vendor/jquery.videobackground.min.js"></script>
   <script>
-            $(function(){
-            $.okvideo({ source: '65806940',
-                volume: 0,
-                loop: 0,
-                hd:true,
-                adproof: true,
-                annotations: false,
-                onFinished: function() { console.log('finished') },
-                unstarted: function() { console.log('unstarted') },
-                onReady: function() { console.log('onready') },
-                onPlay: function() { console.log('onplay') },
-                onPause: function() { console.log('pause') },
-                buffering: function() { console.log('buffering') },
-                cued: function() { console.log('cued') }
-            });
-        });
+    $(document).ready(function () {
+      $('body').prepend('<div class="video-background"></div>');
+      $('.video-background').videobackground({
+        videoSource: [
+          ['videos/mcp.mp4', 'video/mp4'],
+          ['videos/mcp.webm', 'video/webm']
+        ],
+        controlPosition: '.video-background'
+      });
+    });
   </script>
   <!--[if lt IE 9]>
   
   <![endIf]-->
 </head>
 
-<body>
+<body id="noise-bg">
   <header id="header">
     <div class="ym-wrapper">
       <div class="ym-box">

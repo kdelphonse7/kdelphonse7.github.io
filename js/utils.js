@@ -17,7 +17,7 @@ u.ss = {
     return this.mainStyles;
   },
   getSS: function (id) {
-    this.mainStylesHtml = $(id)[0]
+    this.mainStylesHtml = $(id)[0];
 
     this.getS();
 
@@ -29,7 +29,7 @@ u.ss = {
     return this.mainRules;
   },
   getSSRule: function (mainRules, rule) {
-    for (key in mainRules) {
+    for (var key in mainRules) {
       if (typeof this.mainRules[key].selectorText != 'undefined') {
         if (rule == (mainRules[key].selectorText)) {
           return key * 1;
@@ -52,4 +52,4 @@ u.ss = {
       }
     }
   }
-}
+};
