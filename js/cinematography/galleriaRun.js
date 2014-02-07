@@ -5,8 +5,15 @@
 
    function calculateGalleriaHeight() {
      windowHeight = $window.height();
+     windowWidth = $window.width();
      windowHeight = determineHeight(windowHeight);
-     $galleria.css("height", (windowHeight * factor + "px"));
+     if(windowWidth <= 1280) {
+       $galleria.css("height", (windowHeight * factor + "px"));
+     } else {
+       $galleria.css({
+         width: '100%'
+       });
+     }
    }
    
    function determineHeight(windowHeight) {
@@ -21,6 +28,7 @@
      $galleria = $('#galleria'),
      factor = 0.90,
      windowHeight,
+     windowWidth,
      $galUl = $('#galleria-unordered-list'),
      $da = $('#description-area'),
      galLiData = [],
