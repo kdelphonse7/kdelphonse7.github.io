@@ -26,7 +26,7 @@
      //windowHeight = $(this).height();
      calculateGalleriaHeight();
      // Initialize Galleria
-     Galleria.run('#galleria');
+     Galleria.run('#galleria', { idleMode: false });
      //Set height of Galleria on load
      $('head').append('<style id="js-gen-galleria">#galleria {height:' +
        windowHeight * factor + 'px}</style>');
