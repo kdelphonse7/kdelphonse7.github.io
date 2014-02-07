@@ -1,4 +1,5 @@
  $(function () {
+
    // Load the classic theme
    Galleria.loadTheme('js/photography/galleria.classic.js');
 
@@ -19,14 +20,40 @@
    var $window = $(window),
      $galleria = $('#galleria'),
      factor = 0.90,
-     windowHeight;
+     windowHeight,
+     $galUl = $('#galleria-unordered-list'),
+     $da = $('#description-area'),
+     galLiData = [],
+     descElem, $descElem,
+     descAll = [];
+
+   //Get data from ul for new description below videos
+   $galUl.children().each(function() {
+     //Data from the li element
+     galLiData = $(this).data('videoInfo');
+     //Create the description element from data from li
+     descElem = '<div class="text-area"><h1>' +
+       galLiData[1] + ' - ' + galLiData[2] +
+       '</h1><p>' + galLiData[3] + '</p></div>';
+     $descElem = $(descElem);
+     //Need to reference descriptions later
+     descAll.push($descElem);
+     //Append the description element into description area div
+     $da.append($descElem);
+   });
+
+   //Hide siblings that are not the first
+   var $daChildren = $da.children()
+   $daChildren.first().siblings().hide();
+
+   //Track which description is showing for video
+   var indexShowing = 0;
 
    //Run and calculate height of Galleria
    $window.ready(function () {
-     //windowHeight = $(this).height();
      calculateGalleriaHeight();
      // Initialize Galleria
-     Galleria.run('#galleria', { idleMode: false });
+     Galleria.run('#galleria');
      //Set height of Galleria on load
      $('head').append('<style id="js-gen-galleria">#galleria {height:' +
        windowHeight * factor + 'px}</style>');
@@ -34,33 +61,15 @@
    }).on('resize.kdPhotography', function () {
      //Resize the Galleria height on resize
      calculateGalleriaHeight();
-   });      
-   
-   var headerStuff = ["Peek - Cinematographer", "Lou's Prey - Cameraman", 'The Approach - Cinematographer'];
-   
-   var textStuff = ["", "When Troy James decides to steal money from his boss Notorious Crime Boss Fat Reggie he becomes a marked man. Kuroda Red, a hired hitman is hot on his trail. After they finally meet the two men end up in an unexpected situation.", "A man fantasizes about ways to approach a beautiful girl, and in the end, he should've just talked to her. <br><br>An Alex Bretow Film. In association with Midnight Cry Productions. <br>Starring Taylor Fierro and Alex Bretow. <br>Directed, Written, and Edited by Alex Bretow. <br>Cinematographer and Cinematography by Kesslere Delphonse."];
-      
-   var textStuffLen = textStuff.length;
-   
-   var videoList = [85017535, 72301519, 63953198];
-   
-   var pElem = {},
-     elem;
-   for(var i = 0; i < textStuffLen; i++) {
-     elem = '<div class="text-area"><h1>' + headerStuff[i] + '</h1><p>' + textStuff[i] + '</p></div>';
-     pElem[videoList[i]] = elem;     
-   }
-   
-   var $da = $('#description-area');
-      
-   $da.append(pElem[videoList[0]]);     
-   
-   Galleria.ready(function() {
-     
-      this.bind("image", function(e) {
-        var showElem = pElem[videoList[e.index]];                
-        $da.html(showElem);
+   });
 
+   Galleria.ready(function() {
+      this.bind("image", function(e) {
+        //Hide previous and show current
+        descAll[indexShowing].hide();
+        descAll[e.index].show();
+        //Track the currently show
+        indexShowing = e.index;
     });
   });
 
