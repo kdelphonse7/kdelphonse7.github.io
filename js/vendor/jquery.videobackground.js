@@ -4,7 +4,7 @@
  *
  * Copyright 2012, George Paterson
  * Dual licensed under the MIT or GPL Version 2 licenses.
- * Modify by William Huey
+ * Modified by William Huey
  *
  */
 (function ($, document, window) {
