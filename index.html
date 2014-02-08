@@ -92,17 +92,11 @@
      left: 0;
     }
     
-    .spinner {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-    }
-    
-    @media screen and (max-width: 500px) {
-      .spinner {
-        top: 70%;
-      }
-    }
+   #center-item {
+    position: relative;
+    height: 50%;
+    width: 100%;
+   }        
   </style>
   <!--[if lt IE 9]>
     <script src="js/vendor/html5shiv.js"></script>
@@ -118,8 +112,10 @@
     $(document).ready(function () {
       $('body').prepend('<div class="video-background"></div>');
       
-      var spinner;
+      var spinner, $centerItem, $loadingVideo;
+      
       $('.video-background').videobackground({
+        autoplay: true,
         videoSource: [
           ['videos/mcp.ogv', 'video/ogg'],
           ['videos/mcp.mp4', 'video/mp4'],
@@ -127,11 +123,13 @@
         ],
         controlPosition: '.video-background',
         preloadCallback: function() {
+        
           //Append a loading div overlay for loading status
-          $('.video-background').append('<div id="loading-video"></div>');
+          $loadingVideo = $('<div id="loading-video"></div>');
+          $('.video-background').append($loadingVideo);
           
-          var $loadingVideo = $('#loading-video'),
-          loadingVideo = $loadingVideo[0];
+          var $body = $('body'),
+          body = $body[0];
           
           var opts = {
             lines: 9, // The number of lines to draw
@@ -152,19 +150,32 @@
             left: '50%' // Left position relative to parent in px
           };
           
+           //Centering div for the spinner
+           $centerItem = $('<div id="center-item"></div>');
+           
+           $body.append($centerItem);
+          
            //Create a spinner to indicate progress
-           spinner = new Spinner(opts).spin();           
+           spinner = new Spinner(opts).spin($centerItem[0]);           
            var spinnerEle = spinner.el,
            $spinnerEle = $(spinnerEle);
            
-           //Spinner goes into the overlay element
-           $loadingVideo.append($spinnerEle);         
+           //Position the spinner
+           $spinnerEle.css({
+             top: (170 + 'px'),
+             left: '50%',
+             position: 'absolute'
+           });           
+           
         },
         loadedCallback: function() {
           //Remove the spinner and the overlay div
           //when finished loading video
           spinner.stop();
-          $('#loading-video').remove();          
+          $loadingVideo.remove();    
+          $centerItem.remove();
+
+     
         }
       });
     });

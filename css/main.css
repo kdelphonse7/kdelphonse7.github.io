@@ -325,6 +325,10 @@ main h1 {
   #quote-author {
     margin-top: 0%;
   }
+  
+  ul.sub-nav-ul {
+    background: transparent;
+  }
 }
 
 @media screen and (min-width: 850px) {
