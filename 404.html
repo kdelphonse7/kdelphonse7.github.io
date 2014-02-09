@@ -673,6 +673,7 @@ u.ss = {
   
     <script>
 
+
 $(function () {
   //Add class on html when javascript is enabled
   var $html = $('html');
@@ -724,22 +725,17 @@ $(function () {
   createFlyoutMenu(getLiHeight());
 
   var innerWidth,
-  $document = $(document),
   $window = $(window),
   lastWindowWidth = $window.width(),
   $ulNav = $('#main-nav'),
   breakPoint = 850,
-  largerThanBreak = breakPoint + 1,
   clickStatus = false,
   $navButton = $('#nav-button'),
   flyOutMenuPresent = true,
   subMenuPresent = false,
   hasClickedSubMenus = false,
   subMenuPhotographyClickedShowing = false,
-  subMenuCinematographyClickedShowing = false,
-  $navCinematography = $('#nav-a-cinematography'),
-  $navPhotographyUl = $navPhotography.siblings(':hidden'),
-  $navCinematographyUl = $navCinematography.siblings(':hidden');
+  $navPhotographyUl = $navPhotography.siblings(':hidden');
 
   function checkBreakPoint(dim, lastdim, breakPoint, status, elem) {
     if ((dim <= lastdim) && (dim <= breakPoint)) {
@@ -769,17 +765,11 @@ $(function () {
         } else {
           //Hide both submenus
           $navPhotographyUl.hide();
-          $navCinematographyUl.hide();
           //Restore the original state of submenus
           if (subMenuPhotographyClickedShowing) {
             $navPhotographyUl.show();
           } else {
             $navPhotographyUl.hide();
-          }
-          if (subMenuCinematographyClickedShowing) {
-            $navCinematographyUl.show();
-          } else {
-            $navCinematographyUl.hide();
           }
         }
 
@@ -831,8 +821,8 @@ $(function () {
     evtTargetId = evtTarget.id;
 
     //Menu items with submenus should not lead anywhere
-    if (evtTargetId == "nav-a-photography" ||
-      evtTargetId == "nav-a-cinematography") {
+    if (evtTargetId == "nav-a-photography") {
+      console.log('deafult prevent');
       evt.preventDefault();
     }
 
@@ -860,12 +850,6 @@ $(function () {
         } else {
           subMenuPhotographyClickedShowing = false;
         }
-      } else if (evtTargetId == "nav-a-cinematography") {
-        if (!subMenuCinematographyClickedShowing) {
-          subMenuCinematographyClickedShowing = true;
-        } else {
-          subMenuCinematographyClickedShowing = false;
-        }
       }
     }
   });
@@ -877,10 +861,12 @@ $(function () {
   //Only use background stretch for newer browsers
   if (!$html.hasClass('oldIE')) {
     if ($('#bg').length) {
-      //Hide the css background fallback when javascript is enabled
-      $('#bg').addClass('hideThisThing');
-      //Backstretch plugin
-      $.backstretch("./img/Fog.jpg");
+      if($.backstretch) {
+        //Hide the css background fallback when javascript is enabled
+        $('#bg').addClass('hideThisThing');
+        //Backstretch plugin
+        $.backstretch("./img/Fog.jpg");
+      }
     }
   } else {
     //Remove event listeners for old Ie
@@ -888,6 +874,7 @@ $(function () {
     $navButton.off('click.kdSite');
   }
 });
+
     
   </script>
 
@@ -945,42 +932,13 @@ $(function () {
                 </ul>
               </li>              
               <li>
-                <a href="#" id="nav-a-cinematography">
+                <a href="cinematography.html" id="nav-a-cinematography">
                 <span class="a-outer-span">
                         <span class="a-inner-span">
                           Cinematography
                         </span>
                       </span>               
               </a>
-                <ul class="sub-nav-ul fly-out ym-clearfix">
-                  <li>
-                    <a href="cinematography-commercial.html">
-                    <span class="a-outer-span">
-                        <span class="a-inner-span">
-                          Commercial
-                        </span>
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="cinematography-documentaries.html">
-                    <span class="a-outer-span">
-                        <span class="a-inner-span">
-                          Documentaries
-                        </span>
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="cinematography-drama.html">
-                    <span class="a-outer-span">
-                        <span class="a-inner-span">
-                          Drama
-                        </span>
-                      </span>
-                    </a>
-                  </li>
-                </ul>
               </li>
               <li>
                 <a href="demoreel.html">

@@ -60,10 +60,7 @@ $(function () {
   subMenuPresent = false,
   hasClickedSubMenus = false,
   subMenuPhotographyClickedShowing = false,
-  subMenuCinematographyClickedShowing = false,
-  $navCinematography = $('#nav-a-cinematography'),
-  $navPhotographyUl = $navPhotography.siblings(':hidden'),
-  $navCinematographyUl = $navCinematography.siblings(':hidden');
+  $navPhotographyUl = $navPhotography.siblings(':hidden');
 
   function checkBreakPoint(dim, lastdim, breakPoint, status, elem) {
     if ((dim <= lastdim) && (dim <= breakPoint)) {
@@ -93,17 +90,11 @@ $(function () {
         } else {
           //Hide both submenus
           $navPhotographyUl.hide();
-          $navCinematographyUl.hide();
           //Restore the original state of submenus
           if (subMenuPhotographyClickedShowing) {
             $navPhotographyUl.show();
           } else {
             $navPhotographyUl.hide();
-          }
-          if (subMenuCinematographyClickedShowing) {
-            $navCinematographyUl.show();
-          } else {
-            $navCinematographyUl.hide();
           }
         }
 
@@ -155,8 +146,8 @@ $(function () {
     evtTargetId = evtTarget.id;
 
     //Menu items with submenus should not lead anywhere
-    if (evtTargetId == "nav-a-photography" ||
-      evtTargetId == "nav-a-cinematography") {
+    if (evtTargetId == "nav-a-photography") {
+      console.log('deafult prevent');
       evt.preventDefault();
     }
 
@@ -183,12 +174,6 @@ $(function () {
           subMenuPhotographyClickedShowing = true;
         } else {
           subMenuPhotographyClickedShowing = false;
-        }
-      } else if (evtTargetId == "nav-a-cinematography") {
-        if (!subMenuCinematographyClickedShowing) {
-          subMenuCinematographyClickedShowing = true;
-        } else {
-          subMenuCinematographyClickedShowing = false;
         }
       }
     }
