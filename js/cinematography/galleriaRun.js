@@ -55,16 +55,7 @@
    $daChildren.first().siblings().hide();
 
    //Track which description is showing for video
-   var indexShowing = 0;
-   
-   function resizeThumbsArea() {
-     //console.log($galleriaThumbnails);
-     //$galleriaThumbnails.removeAttr('style');
-    $galleriaThumbnails.css('width', '100%');
-    console.log($galleriaThumbnails.css('width'));
-   }
-   
-   var $galleriaThumbnails;
+   var indexShowing = 0;   
 
    //Run and calculate height of Galleria
    $window.ready(function () {
@@ -73,13 +64,11 @@
      Galleria.run('#galleria', {thumbCrop: false});
      //Set height of Galleria on load
      $('head').append('<style id="js-gen-galleria">#galleria {height:' +
-       windowHeight * factor + 'px}</style>');
-       
+       windowHeight * factor + 'px}</style>');       
 
    }).on('resize.kdPhotography', function () {
      //Resize the Galleria height on resize
      calculateGalleriaHeight();
-     resizeThumbsArea();
    });
 
    Galleria.ready(function() {
@@ -91,7 +80,6 @@
         //Track the currently show
         indexShowing = e.index;
     });
-    $galleriaThumbnails = $('.galleria-thumbnails');
        
   });
 
