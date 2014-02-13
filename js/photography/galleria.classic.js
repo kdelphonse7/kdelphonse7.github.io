@@ -17,7 +17,7 @@ Galleria.addTheme({
     css: 'galleria.classic.css',
     defaults: {
         transition: 'slide',
-        thumbCrop:  'height',
+        thumbCrop:  false,
 
         // set this to false if you want to show the caption all the time:
         _toggleInfo: true

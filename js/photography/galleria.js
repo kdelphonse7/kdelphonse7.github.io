@@ -1302,11 +1302,11 @@ Galleria = function() {
             });
 
             self.$( 'thumbnails' ).css({
-                width: '100%',
+                width: w,
                 height: h
             });
 
-            carousel.max = '100%';
+            carousel.max = (w*1.2);
             carousel.hooks = hooks;
             carousel.width = self.$( 'thumbnails-list' ).width();
             carousel.setClasses();
