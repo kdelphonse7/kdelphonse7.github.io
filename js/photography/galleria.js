@@ -1284,6 +1284,7 @@ Galleria = function() {
         // update the carousel
         // you can run this method anytime, f.ex on window.resize
         update: function() {
+            //console.log('updating');
             var w = 0,
                 h = 0,
                 hooks = [0];
@@ -1301,12 +1302,16 @@ Galleria = function() {
                 }
             });
 
+            if(self.$( 'thumbnails-container' ).width() >=  w) {
+              w = '100%';
+            }
+            
             self.$( 'thumbnails' ).css({
                 width: w,
                 height: h
             });
 
-            carousel.max = (w*1.2);
+            carousel.max = w;
             carousel.hooks = hooks;
             carousel.width = self.$( 'thumbnails-list' ).width();
             carousel.setClasses();
@@ -3027,7 +3032,7 @@ Galleria.prototype = {
         }
 
         this.$( 'thumbnails, thumbnails-list' ).css({
-            width: '100%',
+            overflow: 'hidden',
             position: 'relative'
         });
 
