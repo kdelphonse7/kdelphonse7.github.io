@@ -1301,16 +1301,16 @@ Galleria = function() {
                     h = M.max( h, thumb.outerHeight || $( thumb.container).outerHeight( true ) );
                 }
             });
-
-            if(self.$( 'thumbnails-container' ).width() >=  w) {
-              w = '100%';
-            }
-            
+                                
             self.$( 'thumbnails' ).css({
-                width: w,
-                height: h
+              width: w,
+              height: h
             });
-
+            
+            if(self.$( 'thumbnails-container' ).width() >=  w) {
+              self.$( 'thumbnails' ).css('width', '100%');
+            }  
+            
             carousel.max = w;
             carousel.hooks = hooks;
             carousel.width = self.$( 'thumbnails-list' ).width();
