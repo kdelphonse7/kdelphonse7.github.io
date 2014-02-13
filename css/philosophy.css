@@ -3,11 +3,45 @@
    margin-left: 5%;
    margin-top: 2.5em;
    margin-bottom: 5%;
-   width: 60%;
+   width: 70%;
+}
+
+#philosophy-explanation span {
+  display: block;
+  margin-top: 5%;
+}
+
+#sp-visuals, #sp-master {
+  background-color: #121212;
+  color: #fff;
+}
+
+#sp-visuals span,
+#sp-master span {
+  margin-top: 0%;
+}
+
+.sp-text {
+  position: relative;
+}
+
+#sp-visuals .sp-text, 
+#sp-master .sp-text { 
+  width: 90%;
+  padding: 2% 5% 4%;
+}
+
+.sp-text img {
+  height: 42px;
+  width: 75px;
+}
+
+#eye, #clapper {
+  float: right;
 }
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 850px) {
 
   #philosophy-explanation {
      margin-left: 5%;

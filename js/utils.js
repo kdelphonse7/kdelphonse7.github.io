@@ -1,10 +1,11 @@
-var u = util = {};
-u.ss = util.stylesheet = {};
+var kdSite = {};
+kdSite.util = {};
+kdSite.util.stylesheet = {};
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++
 //Stylesheet Manipulation  
 
-u.ss = {
+kdSite.util.stylesheet = {
   mainStyles: {},
   mainStylesHtml: {},
   mainRules: {},

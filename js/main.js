@@ -14,9 +14,13 @@ $(function () {
   //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
   //Get Rule from Stylesheet and Remove it
-  var styleSelector = '#main-styles';
-  var mainRules = u.ss.getSS(styleSelector);
-  var ruleNumber = u.ss.getSSRule(mainRules, "#main-nav ul li:hover > ul");
+  var styleSelector = '#main-styles',
+  u = {};
+  u.ss = kdSite.util.stylesheet;
+  
+  var mainRules = u.ss.getSS(styleSelector),
+  ruleNumber = u.ss.getSSRule(mainRules, "#main-nav ul li:hover > ul");
+  
   u.ss.deleteRule(ruleNumber);
 
   //+++++++++++++++++++++++++++++++++++++++++++++++++++

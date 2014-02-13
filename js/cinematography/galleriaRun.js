@@ -56,22 +56,34 @@
 
    //Track which description is showing for video
    var indexShowing = 0;
+   
+   function resizeThumbsArea() {
+     //console.log($galleriaThumbnails);
+     //$galleriaThumbnails.removeAttr('style');
+    $galleriaThumbnails.css('width', '100%');
+    console.log($galleriaThumbnails.css('width'));
+   }
+   
+   var $galleriaThumbnails;
 
    //Run and calculate height of Galleria
    $window.ready(function () {
      calculateGalleriaHeight();
      // Initialize Galleria
-     Galleria.run('#galleria');
+     Galleria.run('#galleria', {thumbCrop: false});
      //Set height of Galleria on load
      $('head').append('<style id="js-gen-galleria">#galleria {height:' +
        windowHeight * factor + 'px}</style>');
+       
 
    }).on('resize.kdPhotography', function () {
      //Resize the Galleria height on resize
      calculateGalleriaHeight();
+     resizeThumbsArea();
    });
 
    Galleria.ready(function() {
+     
       this.bind("image", function(e) {
         //Hide previous and show current
         descAll[indexShowing].hide();
@@ -79,6 +91,8 @@
         //Track the currently show
         indexShowing = e.index;
     });
+    $galleriaThumbnails = $('.galleria-thumbnails');
+       
   });
 
  });
