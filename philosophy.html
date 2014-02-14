@@ -24,11 +24,10 @@
   <script src="js/main.js"></script>
   <script>
     $(function() {
-      $('#sp-visuals .sp-text').append('<span id="eye"><img src="img/philosophy/' + 'eye.svg'+ '"></span>');
-      
-      $('#sp-master .sp-text').append('<span id="clapper"><img src="img/philosophy/' + 'clapper.svg'+ '"></span>');
-
-
+      var format = Modernizr.svg ? format = 'svg' : format = 'png';    
+     
+      $('#sp-visuals .sp-text').append('<span id="eye"><img src="img/philosophy/eye.' + format + '"></span>');      
+      $('#sp-master .sp-text').append('<span id="clapper"><img src="img/philosophy/clapper.' + format + '"></span>');
     });
   </script>
   <!--[if lt IE 9]>
