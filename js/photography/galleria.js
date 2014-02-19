@@ -1279,19 +1279,24 @@ Galleria = function() {
         max: 0,
 
         // save all hooks for each width in an array
-        hooks: [],
+        hooks: [],       
 
         // update the carousel
         // you can run this method anytime, f.ex on window.resize
         update: function() {
-            //console.log('updating');
+        
             var w = 0,
                 h = 0,
                 hooks = [0];
+                
+            var items = self._thumbnails[self._thumbnails.length - 1].id,
+              wrapCheck = false,
+              $lastItem;
 
             $.each( self._thumbnails, function( i, thumb ) {
                 if ( thumb.ready ) {
                     w += thumb.outerWidth || $( thumb.container ).outerWidth( true );
+                    
                     // Due to a bug in jquery, outerwidth() returns the floor of the actual outerwidth,
                     // if the browser is zoom to a value other than 100%. height() returns the floating point value.
                     var containerWidth = $( thumb.container).width();
@@ -1299,17 +1304,41 @@ Galleria = function() {
 
                     hooks[ i+1 ] = w;
                     h = M.max( h, thumb.outerHeight || $( thumb.container).outerHeight( true ) );
+                     
+                    //on the last item
+                    if(i == items) {                     
+                      $lastItem = $( thumb.container );
+                      wrapCheck = true;
+                    }
                 }
             });
-                                
+
             self.$( 'thumbnails' ).css({
               width: w,
               height: h
-            });
+            });            
             
-            if(self.$( 'thumbnails-container' ).width() >=  w) {
-              self.$( 'thumbnails' ).css('width', '100%');
-            }  
+            //only check for wrapping when the last thumbnail has loaded
+            if(wrapCheck) {            
+              
+              var lastTop = $lastItem.offset().top,
+                thumbnailContainerWidth,
+                counter = 1;              
+              
+              //compare last item with first item for changes
+              if($lastItem.siblings().first().offset().top != lastTop) {
+              
+                //keep incrementing the 'thumbnails' div until
+                //the offset top of the last element has changed
+                while(lastTop == $lastItem.offset().top) {
+                  thumbnailContainerWidth = self.$( 'thumbnails' ).width();
+                  thumbnailContainerWidth = thumbnailContainerWidth + M.pow(5, counter);
+                  self.$( 'thumbnails' ).css('width', thumbnailContainerWidth);                  
+                  counter++;
+                }
+              }                         
+              wrapCheck = false;
+            }           
             
             carousel.max = w;
             carousel.hooks = hooks;
@@ -1322,6 +1351,7 @@ Galleria = function() {
             carousel.width = self.$( 'thumbnails-list' ).width();
 
             // todo: fix so the carousel moves to the left
+            
         },
 
         bindControls: function() {
