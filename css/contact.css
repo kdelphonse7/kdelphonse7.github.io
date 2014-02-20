@@ -1,10 +1,19 @@
 #contact-info-area {
   margin-left: 10%;
   margin-top: 2.5em;
+  margin-bottom: 2em;
 }
 
 .contact-part {
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+  width: 33%;
+  float: left;  
+}
+
+.contact-text {
+  display: block;
+  float: left;  
+  padding: 20px 0px 20px 3%;
 }
 
 .contact-header {
@@ -18,4 +27,25 @@
 .contact-value {
   clear: both;
   padding-left: 1em;
+}
+
+
+#contact-info-area img {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  .contact-part {
+    width: 100%;
+  }
+  
+  #contact-info-area img {
+    float: left;
+  }  
+}
+
+@media screen and (max-width: 750px) {
+  .contact-text {
+    width: 100%;
+  }
 }

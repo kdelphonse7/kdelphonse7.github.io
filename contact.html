@@ -23,6 +23,21 @@
   <script src="js/vendor/modernizr.custom.37132.js"></script>
   <script src="js/utils.js"></script>   
   <script src="js/main.js"></script>
+  <script>
+    $(function() {
+      
+      if(Modernizr.svg) {
+        console.log('svg');
+        var images = ['name', 'phone', 'email'],
+          imagesLen = images.length;
+        for(var i = 0; i < imagesLen; i++) {
+          $('#' + images[i] + '-pic').attr('src', ('img/contact/' + images[i] + '.svg'));
+        }
+        
+      }
+      
+    });
+  </script>
   
   <!--[if lt IE 9]>
   
@@ -133,31 +148,51 @@
         <div class="ym-g80"  id="main-content">
           
         <h1 id="page-location">Contact</h1>  
-           <div class="ym-g80" id="contact-info-area">
+           <div class="ym-g80 ym-clearfix" id="contact-info-area">
+           
+           
              <p class="ym-clearfix contact-part">
-                <span class="contact-header">
-                  Name
-                </span> 
-                <span class="contact-value" id="contact-name">
-                 Kesslere Delphonse
+                <img alt="name-pic" id="name-pic" src="img/contact/name.png">
+                
+                <span class="contact-text ym-clearfix">
+                  <span class="contact-header">
+                    Name
+                  </span> 
+                  <span class="contact-value" id="contact-name">
+                   Kesslere Delphonse
+                  </span>                
                 </span>
+
+                
              </p>
+             
              <p class="ym-clearfix contact-part">
+             <img alt="phone-pic" id="phone-pic" src="img/contact/phone.png">
+             
+             <span class="contact-text ym-clearfix">
                 <span class="contact-header">
                   Phone Number
                 </span> 
                 <span class="contact-value" id="contact-number">
                  305-417-2840
                 </span>                
+                </span>
              </p>
+             
+             
              <p class="ym-clearfix contact-part">
+             <img alt="email-pic" id="email-pic" src="img/contact/email.png">
+               <span class="contact-text ym-clearfix">
                 <span class="contact-header">
                   Email
                 </span>
                 <span class="contact-value" id="contact-email">
                  keskingdavid@hotmail.com
-                </span>                   
+                </span>   
+              </span>                
              </p>
+             
+             
            </div>           
         </div>
     </div>
