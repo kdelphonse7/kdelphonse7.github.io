@@ -54,6 +54,10 @@ a {
   background-image: url('../img/noise-bg.png');
 }
 
+#dark-gray-bg {
+  background-color: #070707;
+}
+
 #bg {
   position: fixed;
   top: 0;
