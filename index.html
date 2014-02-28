@@ -104,6 +104,7 @@
   <script src="js/vendor/jquery-1.10.2.min.js"></script>
   <script src="js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
   <script src="js/vendor/modernizr.custom.37132.js"></script>
+  <script src="js/vendor/modernizr.custom.69710.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/main.js"></script>
   <script src="js/vendor/spin.min.js"></script>
@@ -112,17 +113,42 @@
     $(document).ready(function () {
       $('body').prepend('<div class="video-background"></div>');
       
+       var videoSupport = ['videos/mcp.', 'video/'],
+        posterImage, videoFormatChosen;
+
+      function setVideo(f1, f2) {
+        if (arguments.length == 1) {
+          videoSupport[0] += f1;
+          videoSupport[1] += f1;
+        } else {
+          videoSupport[0] += f1;
+          videoSupport[1] += f2;
+        }
+      }
+      if (Modernizr.video) {
+        //Check which format of html5 video is supported
+        if (Modernizr.video.ogg) {
+          setVideo('ogv', 'ogg');
+          videoFormatChosen = 'ogv';
+        } else if (Modernizr.video.h264) {
+          setVideo('mp4');
+          videoFormatChosen = 'mp4';
+        } else if (Modernizr.video.webm) {
+          setVideo('webm');
+          videoFormatChosen = 'webm';
+        }
+      } else {
+        //Does not support html5 video  
+        posterImage = 'img/cinematography/mcp.jpg';
+      }
+      
       var spinner, $centerItem, $loadingVideo;
       
       $('.video-background').videobackground({
         autoplay: true,
-        videoSource: [
-          ['videos/mcp.ogv', 'video/ogg'],
-          ['videos/mcp.mp4', 'video/mp4'],
-          ['videos/mcp.webm', 'video/webm']
-        ],
+        videoSource: [videoSupport],
         controlPosition: '.video-background',
-        poster: 'img/cinematography/mcp.jpg',
+        poster: posterImage,
         preloadCallback: function() {
         
           //Append a loading div overlay for loading status
