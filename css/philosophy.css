@@ -40,6 +40,17 @@
   float: right;
 }
 
+#kesslere-self-photo-container {
+  width: 100%;
+  background-color: #000000;
+}
+
+#kess-image {
+  margin-left: 5%;
+  max-width: 90%;
+  padding: 1.5em 0em;
+}
+
 
 @media screen and (max-width: 850px) {
 
