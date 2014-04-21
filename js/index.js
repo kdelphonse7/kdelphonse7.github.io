@@ -8,7 +8,8 @@ $(function() {
     imgAspectRatio = imgWidthFactor / imgHeightFactor,
     wHeight,
     wWidth,
-    marginLeft;
+    marginLeft,
+    maxWidth;
 
   var scaledImgWidth;
 
@@ -30,7 +31,7 @@ $(function() {
     //Image resize decisions
     if ((scaledImgWidth / wWidth) <= 0.7 ||
       scaledImgWidth >= wWidth ||
-      wWidth >= maxVideoWidth) {
+      wWidth >= maxWidth) {
       //Scaled image is greater than max win width
       //Too much margins or 
       //scaled image is greater than window width
