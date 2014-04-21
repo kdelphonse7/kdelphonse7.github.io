@@ -151,7 +151,6 @@ $(function () {
 
     //Menu items with submenus should not lead anywhere
     if (evtTargetId == "nav-a-photography") {
-      console.log('deafult prevent');
       evt.preventDefault();
     }
 
