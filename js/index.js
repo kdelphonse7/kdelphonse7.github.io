@@ -9,7 +9,7 @@ $(function() {
     wHeight,
     wWidth,
     marginLeft,
-    maxWidth;
+    maxWidth = 1280;
 
   var scaledImgWidth;
 
@@ -29,9 +29,9 @@ $(function() {
     marginLeft = (wWidth - scaledImgWidth) / 2;
 
     //Image resize decisions
-    if ((scaledImgWidth / wWidth) <= 0.7 ||
+    if (wWidth >= maxWidth || 
       scaledImgWidth >= wWidth ||
-      wWidth >= maxWidth) {
+      (scaledImgWidth / wWidth) <= 0.7) {
       //Scaled image is greater than max win width
       //Too much margins or 
       //scaled image is greater than window width
